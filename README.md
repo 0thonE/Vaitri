@@ -1,2 +1,0 @@
-# Kahoot
-Proyecto de Web
