@@ -11399,6 +11399,13 @@ fieldset[disabled][disabled] .btn-group-raised .btn,
   font-size: 20px;
 }
 
+.btn.btn-primary.btn-round.btn-fab.btn-add {
+  position: sticky !important;
+  bottom: 40px;
+  left: 93%;
+  z-index: 3;
+}
+
 .btn-just-icon.btn-lg,
 .btn-group-lg>.btn-just-icon.btn {
   font-size: 24px;
@@ -15378,7 +15385,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 .sidebar .logo:after,
-.sidebar .user:after{
+.sidebar .user:after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -15678,6 +15685,19 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     -o-transform: translate3d(0px, 0, 0);
     -ms-transform: translate3d(0px, 0, 0);
     transform: translate3d(0px, 0, 0);
+  }
+
+
+  .sidebar-mini .sidebar .logo .logo-complete {
+    display: none;
+  }
+
+  .sidebar-mini .sidebar:hover .logo .logo-complete {
+    display: inline-block;
+  }
+
+  .sidebar-mini .sidebar:hover .logo .logo-icon {
+    display: none;
   }
 
   .sidebar-mini .sidebar:hover .sidebar-wrapper {
@@ -17943,13 +17963,25 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
   transition: all 300ms cubic-bezier(0.34, 1.61, 0.7, 1);
 }
 
-.card:hover [data-header-animation="true"] {
+.card:hover>[data-header-animation="true"] {
   -webkit-transform: translate3d(0, -50px, 0);
   -moz-transform: translate3d(0, -50px, 0);
   -o-transform: translate3d(0, -50px, 0);
   -ms-transform: translate3d(0, -50px, 0);
   transform: translate3d(0, -50px, 0);
 }
+
+.card .question-card-list {
+  height: 100%;
+}
+
+/* .card .card:hover [data-header-animation="true"] {
+  -webkit-transform: translate3d(0, -50px, 0);
+  -moz-transform: translate3d(0, -50px, 0);
+  -o-transform: translate3d(0, -50px, 0);
+  -ms-transform: translate3d(0, -50px, 0);
+  transform: translate3d(0, -50px, 0);
+} */
 
 .card .map {
   height: 280px;
@@ -18018,6 +18050,24 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 
 .card-product .price {
   color: inherit;
+}
+
+.card-product h1.card-title input,
+.card-product h1.card-title textarea {
+  color: white;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-left: 80px;
+  padding-right: 80px;
+  overflow: hidden;
+}
+
+.card-product h1.card-title input::placeholder,
+.card-product h1.card-title textarea::placeholder {
+  color: white;
 }
 
 .card-collapse {
@@ -19792,10 +19842,186 @@ div.user {
 }
 
 @media(min-width: 1024px) {
-   .app-fab--absolute {
+  .app-fab--absolute {
     bottom: 1.5rem;
     right: 1.5rem;
   }
 }
 
-/*# sourceMappingURL=dashboard-free.css.map */
+.img_uploader .fileinput-preview img {
+  width: 100%;
+}
+
+.img_uploader .img_holder img {
+  width: 100%;
+}
+
+.img_uploader .img_wrapper {
+  border: dashed 3px lavender;
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+}
+
+.img_uploader .hiding {
+  display: none;
+}
+
+.img_uploader input[type="file"] {
+  visibility: hidden;
+  display: none;
+}
+
+/* Manejo del scroll en la side bar de las preguntas*/
+
+.question-cards-list_footer {
+  background-color: white !important;
+  width: 92%;
+  position: absolute;
+  bottom: -10px;
+  left: -4px;
+  z-index: 3;
+  height: 5em;
+  box-shadow: 0 -5px 5px -5px #aaa;
+}
+
+.question-cards-list_footer .button-container {
+  padding-left: 1em;
+  padding-bottom: 1.5em;
+}
+
+.questions-side_bar {
+  max-height: 94vh;
+  min-width: 14em;
+}
+
+.question-cards-list {
+  max-height: 94vh;
+  overflow: auto;
+  padding-bottom: 4em;
+}
+
+.question-cards-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.question-cards-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent;
+  border-radius: 10px;
+}
+
+.question-cards-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* Select points */
+.points-selection .choice {
+  text-align: center;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.points-selection .choice[disabled] {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: .26
+}
+
+.points-selection .choice .icon {
+  text-align: center;
+  vertical-align: middle;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  color: #999;
+  margin: 0 auto 10px;
+  border: 4px solid #ccc;
+  transition: all .2s;
+  -webkit-transition: all .2s;
+}
+
+.points-selection .choice i {
+  font-size: 40px;
+  line-height: 60px;
+  
+}
+.points-selection .choice i._zero {
+  font-size: 50px;
+  line-height: 60px;
+}
+
+.points-selection .choice.active .icon,
+.points-selection .choice:hover .icon{
+  border-color: #9c27b0;
+}
+
+.points-selection .choice input[type=checkbox],
+.points-selection .choice input[type=radio] {
+  position: absolute;
+  left: -10000px;
+  z-index: -1;
+}
+
+/* Options  */
+
+.card-product .card-title input,
+.card-product .card-title input::placeholder{
+  color: white;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 90%;
+  padding-top: .5em ;
+  padding-bottom: .5em ;
+  padding-left: .5em ;
+}
+.card-product .form-check{
+  position: absolute;
+  top: 2em;
+  right: 1em;
+}
+.card-product .form-check .check {
+  background-color: white;
+}
+.alert.alert-primary,
+.alert.alert-primary.option_1 {
+  background-color: #7f25b3;
+  color: #ffffff;
+}
+.alert.alert-primary.option_2 {
+  background-color: rgb(19, 104, 206);
+}
+.alert.alert-primary.option_3 {
+  background-color: #ff9800;
+}
+.alert.alert-primary.option_4 {
+  background-color: rgb(233, 0, 128);
+}
+.alert.alert-primary.option_5 {
+  background-color: rgb(3, 172, 31);
+}
+.alert.alert-primary.option_6 {
+  background-color: rgb(255, 102, 0);
+}
+
+.card.done-card{
+  position: absolute;
+  top: -3em;
+  height: 0;
+
+}
+.card.done-card .stats{
+  position: absolute;
+  top: 1em;
+  right: 30%;
+}
+.card.done-card .btn{
+  background-color: #4caf50;
+  padding-bottom: 0px;
+  box-shadow: 0 2px 2px 0 rgba(26, 104, 2, 0.568), 0 3px 1px -2px rgba(26, 104, 2, 0.568), 0 1px 5px 0 rgba(26, 104, 2, 0.568);
+}
+.btn.btn-primary.btn-save:focus,
+.btn.btn-primary.btn-save:active,
+.btn.btn-primary.btn-save:hover {
+  box-shadow: 0 14px 26px -12px rgba(26, 104, 2, 0.568), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(26, 104, 2, 0.568);
+}
