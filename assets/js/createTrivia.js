@@ -89,6 +89,11 @@ function new_question(q_text,q_points,q_anserws,q_img) {
     questions_list.push(question);
     // current_question=questions_list[questions_list.length-1];
     
+    render_question_card();    
+
+}
+
+function render_question_card() {
     
     let question_card=`
         <div class="col-md-12">
@@ -137,6 +142,7 @@ function new_question(q_text,q_points,q_anserws,q_img) {
     
     question_cards_list.appendChild(template.children[0]);
 
+    
     let last_el_index=questions_list.length-1;
     let q_card=question_cards_list.children[last_el_index];
     
@@ -150,6 +156,7 @@ function new_question(q_text,q_points,q_anserws,q_img) {
     });
     
     last_edit_button.click();
+    
 }
 
 function create_question_element(id,q_text,q_points,q_anserws,q_img,q_file,q_val) {
@@ -356,7 +363,16 @@ function save_trivia(){
     window.location.replace("./dashboard.html")
 
 }
-
+let trivia_now;
+function load_new_trivia(trivia) {
+    trivia_now=trivia;
+    questions_list=trivia.questions
+    current_question=questions_list[0];
+    render_question_card();
+    
+    
+    last_edit_button.click();
+}
 
 function create_new_trivia(){
     // new_question("hola",1,[{
@@ -368,5 +384,5 @@ function create_new_trivia(){
 
 
 pointsSelection();
-createTrivia_controls();
 create_new_trivia();
+createTrivia_controls();
