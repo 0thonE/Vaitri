@@ -6,7 +6,8 @@
   <link rel="icon" type="image/png" href="../assets/img/ViatriLogo1.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    VAITRo
+
+    Vaitri
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -17,15 +18,19 @@
 
   <!-- CSS Files -->
   <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+
+
 </head>
 
-<body class="">
+<body class="sidebar-mini">
 
   <div class="wrapper ">
+
     <div class="sidebar " data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
 
       <div class="logo">
-        <img src="../assets/img/ViatriLogo1.png" style="width: 70%; padding-left: 10px;">
+        <img class="logo-complete" src="../assets/img/ViatriLogo1.png" style="width: 70%; padding-left: 10px;">
+        <img class="logo-icon" src="../assets/img/ViatriIcon.png" style="width: 70%; padding-left: 10px;">
       </div>
       <div class="sidebar-wrapper">
         <div class="user">
@@ -65,7 +70,7 @@
               <p>Home</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item  ">
             <!-- trivias -->
             <a class="nav-link" href="./dashboard.html">
               <i class="material-icons">dashboard</i>
@@ -86,7 +91,7 @@
               <p>Nueva Trivia</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item style=" display: none;"">
             <!-- programadas -->
             <a class="nav-link" href="./programed.html">
               <i class="material-icons">content_paste</i>
@@ -100,14 +105,14 @@
               <p>Calendario</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item style=" display: none;"">
             <!-- icons -->
             <a class="nav-link" href="./icons.html">
               <i class="material-icons">bubble_chart</i>
               <p>Icons</p>
             </a>
           </li>
-          <li class="nav-item  ">
+          <li class="nav-item style=" display: none;"">
             <!-- notifications -->
             <a class="nav-link" href="./notifications.html">
               <i class="material-icons">notifications</i>
@@ -116,7 +121,7 @@
           </li>
           <li class="nav-item active-pro ">
             <!-- play -->
-            <a class="nav-link" href="./play.html">
+            <a class="nav-link" href="./juega.html">
               <i class="material-icons">play_circle_outline</i>
               <p>juega</p>
             </a>
@@ -130,7 +135,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Nueva Trivia</a>
+            <a class="navbar-brand" href="javascript:;">Trivias</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -186,124 +191,333 @@
 
       </nav>
       <!-- End Navbar -->
+
       <div class="content">
-        <table>
-          <tr>
-            <td style="width: 5em;">
-              <ul class="nav">
-                <li class="nav-item ">
-                  <a class="nav-link" href="./index.html">
-                    <i class="material-icons">add_circle</i>
-                    <p>Nueva pregunta</p>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="./index.html">
-                    <i class="material-icons">publish</i>
-                    <p>pregunta anterior</p>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="./index.html">
-                    <i class="material-icons">get_app</i>
-                    <p>siguente pregunta</p>
-                  </a>
-                </li>
-                <li class="nav-item ">
-                  <a class="nav-link" href="./index.html">
-                    <i class="material-icons">delete</i>
-                    <p>borrar</p>
-                  </a>
-                </li>
-              </ul>
-            </td>
-            <td colspan="4">
-              <div class="container-fluid">
-                <div class="card">
-                  <div class="card-header card-header-primary">
-                    <h1 class="card-title"><input type="text" placeholder="Escribe tu pregunta" style="background-color: rgba(0, 0, 0, 0); border: none; outline:none;"></h2>
-                    <p class="card-category">Escribe tu pregunta</p>
-                  </div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <ul>
-                          <li>
-                            <label for="time">Tiempo (s)</label>
-                            <input type="number" name="time" id="time">
-                          </li>
-                          <li>
-                            <label for="points">Puntos</label>
-                            <input type="number" name="points" id="points">
-                          </li>
-                        </ul>
+
+        <div class="container-fluid">
+          <div class="row ">
+            <div class="col-md-3 col-lg-2">
+              <div class="card card-product questions-side_bar">
+                <div class="question-cards-list">
+                  <!-- <div class="col-md-12">
+                    <div class="card card-product">
+                      <div class="card-header card-header-image" data-header-animation="true">
+                        <a href="#">
+                          <img class="question_img" src="../assets/img/image_placeholder.jpg">
+                        </a>
                       </div>
-                      <div class="col-md-6">
-                        <img src="../assets/img/add-image.png" >
+                      <div class="card-body">
+                        <div class="card-actions text-center">
+                          <button type="button" class="btn btn-danger btn-link fix-broken-card">
+                            <i class="material-icons">build</i> Fix Header!
+                          </button>
+                          <button type="button" class="btn btn-success btn-link btn_edit_question" rel="tooltip"
+                            data-placement="bottom" title="" data-original-title="Editar">
+                            <i class="material-icons">edit</i>
+                          </button>
+                          <button type="button" class="btn btn-danger btn-link btn_delete_question" rel="tooltip"
+                            data-placement="bottom" title="" data-original-title="Borrar"
+                            aria-describedby="tooltip571092">
+                            <i class="material-icons">delete_outline</i>
+                          </button>
+                        </div>
+                        <h4 class="card-title">
+                          <a class="question_text" href="#">tu pregunta</a>
+                        </h4>
+                        <div class="card-description">
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <div class="stats">
+                          <Strong><p class="valor_label">Valor</p></Strong>
+                        </div>
+                        <div class="stats">
+                          <p class="question_points"></p>
+                        </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="alert alert-info">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="material-icons">close</i>
-                          </button>
-                          <span>
-                            <input type="text" style="color:white; background-color: rgba(0, 0, 0, 0); border: none; outline:none;">
-                          </span>
-                        </div>
-                        <div class="alert alert-info">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="material-icons">close</i>
-                          </button>
-                          <span>
-                            <input type="text" style="color:white; background-color: rgba(0, 0, 0, 0); border: none; outline:none;">
-                          </span>
-                        </div>
-                        <div class="alert alert-info">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="material-icons">close</i>
-                          </button>
-                          <span>
-                            <input type="text" style="color:white; background-color: rgba(0, 0, 0, 0); border: none; outline:none;">
-                          </span>
+                  </div> -->
+                </div>
+
+                <!-- Nueva pregunta-->
+                <div class="card-footer question-cards-list_footer">
+                  <div class="stats">
+                    <div class="button-container">
+                      <button class="btn btn-primary btn-block btn-new_question">
+                        Nueva Pregunta
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Pregunta -->
+            <div class="col-md-9 col-lg-8">
+              <div class="card card-product card_question_fields">
+                <div class="card-header card-header-primary">
+                  <h1 class="card-title"><input class="question_text" type="text"
+                      placeholder="Da click para escribir tu pregunta"></h1>
+                </div>
+
+                <div class="card-body">
+                  <!-- Puntuacion e imagen -->
+                  <div class="row">
+                    <!-- Seleccion de puntaje -->
+                    <div class="col-md-3 points_col">
+
+                      <div class="row points-selection">
+                        <div class="col-sm-4"></div>
+                        <h4>Puntos por pregunta</h4>
+                      </div>
+                      <div class="row points-selection">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                          <div class="choice points_0" data-toggle="wizard-checkbox">
+                            <input type="radio" name="point" value="points_0">
+                            <div class="icon  ">
+                              <i class="material-icons">exposure_zero</i>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="alert alert-info">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="material-icons">close</i>
-                          </button>
-                          <span>
-                            <input type="text" style="color:white; background-color: rgba(0, 0, 0, 0); border: none; outline:none;">
-                          </span>
+                      <div class="row points-selection">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                          <div class="choice points_1" data-toggle="wizard-checkbox">
+                            <input type="radio" name="point" value="points_1">
+                            <div class="icon">
+                              <i class="material-icons">exposure_plus_1</i>
+                            </div>
+                          </div>
                         </div>
-                        <div class="alert alert-info">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="material-icons">close</i>
-                          </button>
-                          <span>
-                            <input type="text" style="color:white; background-color: rgba(0, 0, 0, 0); border: none; outline:none;">
-                          </span>
+                      </div>
+                      <div class="row points-selection">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                          <div class="choice points_2" data-toggle="wizard-checkbox">
+                            <input type="radio" name="point" value="points_2">
+                            <div class="icon">
+                              <i class="material-icons">exposure_plus_2</i>
+                            </div>
+                          </div>
                         </div>
-                        <div class="alert alert-info">
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <i class="material-icons">close</i>
+                      </div>
+
+                    </div>
+                    <!-- Subir imagen -->
+                    <div class="col-md-6">
+                      <div class="img_uploader">
+                        <div class="fileinput text-center fileinput-new" data-provides="fileinput">
+                          <div class="img_wrapper">
+                            <div class="fileinput-new thumbnail hideable img_holder">
+                              <img src="../../assets/img/image_placeholder.jpg" alt="...">
+                            </div>
+                            <div id="container" class="fileinput-preview fileinput-exists thumbnail" style="">
+                            </div>
+                          </div>
+                          <div>
+                            <span class="btn btn-rose btn-round btn-file">
+                              <span class="fileinput-new hideable">Agregar imagen </span>
+                              <span class="fileinput-exists hiding">Cambiar</span>
+                              <input type="hidden" value="" name="...">
+                              <input class="fileinput-container" type="file" name="" accept="image/png, image/jpeg">
+                              <div class="ripple-container"></div>
+                            </span>
+                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists btn_remove_img hiding"
+                              data-dismiss="fileinput"><i class="fa fa-times"></i> Remove<div class="ripple-container">
+                                <div class="ripple-decorator ripple-on ripple-out"
+                                  style="left: 48.4063px; top: 26.375px; background-color: rgb(255, 255, 255); transform: scale(15.5098);">
+                                </div>
+                                <div class="ripple-decorator ripple-on ripple-out"
+                                  style="left: 48.4063px; top: 26.375px; background-color: rgb(255, 255, 255); transform: scale(15.5098);">
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                  </div>
+
+                  <!-- Instrucciones para las respuestas -->
+                  <div class="row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-8" style="padding-bottom: .5em;">
+                      <h3>Seleccione la(s) respuesta(s) correcta(s)</h3>
+                      <h6>Escriba minimo 2 respuestas</h6>
+                    </div>
+                  </div>
+                  <!-- Opciones de respuesta -->
+                  <div class="row question_answers">
+                    <div class="col-md-6">
+                      <div class="alert alert-primary option_1">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
+                          </h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="alert alert-primary option_2">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
+                          </h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="alert alert-primary option_3">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
+                          </h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="alert alert-primary option_4">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
+                          </h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="alert alert-primary option_5">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
+                          </h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="alert alert-primary option_6">
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        </div>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
+                          </h3>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="card card-product done-card">
+                    <div class="card-footer ">
+                      <div class="stats">
+                        <div class="button-container">
+                          <button class="btn btn-primary btn-block btn-save">
+                            <h5><strong>Guardar Trivia</strong></h5>
                           </button>
-                          <span>
-                            <input type="text" style="color:white; background-color: rgba(0, 0, 0, 0); border: none; outline:none;">
-                          </span>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </td>
-          </tr>
-        </table>
+              <div class="row" style="visibility: hidden;">
+                <div class="col-lg-12">
+                  <div class="card card-product ">
+                    <div class="card-body"></div>
+                  </div>
+                </div>
+              </div>
 
+
+              <div class="row" >
+                <div class="col-lg-12">
+                  <div class="card card-product ">
+    
+                    <div class="card-body">
+                      <!-- Puntuacion e imagen -->
+
+                      <!-- Opciones de respuesta -->
+                      <div class="row question_answers">
+                        <div class="col-md-6 col-sm-12">
+                          <div class="alert alert-primary option_4">
+                            <h4 class="card-title"><input type="text" value="Fecha:" disabled></h4>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="alert alert-primary option_2">
+                            <h4 class="card-title"><input type="text" class="fecha_input fecha_dd" placeholder="dd"></h4>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="alert alert-primary option_5">
+                            <h4 class="card-title"><input type="text" class="fecha_input fecha_mm" placeholder="mm"></h4>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="alert alert-primary option_6">
+                            <h4 class="card-title"><input type="text" class="fecha_input fecha_yyyy" placeholder="yyyy"></h4>
+                          </div>
+                        </div>
+                      </div>
+    
+                    </div>
+
+                    
+                    <div class="card-header card-header-primary trivia_tritle">
+                      <h5 class="card-title "><input class="question_text trivia_name" type="text"
+                          placeholder="Nombre de la trivia"></h5>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
       </div>
+
       <footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
@@ -331,54 +545,354 @@
   </div>
 
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../../assets/js/core/jquery.min.js"></script>
+  <script src="../../assets/js/core/popper.min.js"></script>
+  <script src="../../assets/js/core/bootstrap-material-design.min.js"></script>
+  <script src="../../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!-- Plugin for the momentJs  -->
-  <script src="../assets/js/plugins/moment.min.js"></script>
+  <script src="../../assets/js/plugins/moment.min.js"></script>
   <!--  Plugin for Sweet Alert -->
-  <script src="../assets/js/plugins/sweetalert2.js"></script>
+  <script src="../../assets/js/plugins/sweetalert2.js"></script>
   <!-- Forms Validations Plugin -->
-  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+  <script src="../../assets/js/plugins/jquery.validate.min.js"></script>
   <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <script src="../../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
   <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script>
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <script src="../../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
+  <script src="../../assets/js/plugins/jquery.dataTables.min.js"></script>
   <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <script src="../../assets/js/plugins/bootstrap-tagsinput.js"></script>
   <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <script src="../../assets/js/plugins/jasny-bootstrap.min.js"></script>
   <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
+  <script src="../../assets/js/plugins/fullcalendar.min.js"></script>
   <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
+  <script src="../../assets/js/plugins/jquery-jvectormap.js"></script>
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../assets/js/plugins/nouislider.min.js"></script>
+  <script src="../../assets/js/plugins/nouislider.min.js"></script>
   <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
-  <script src="../assets/js/plugins/arrive.min.js"></script>
+  <script src="../../assets/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2Yno10-YTnLjjn_Vtk0V8cdcY5lC4plU"></script>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Chartist JS -->
-  <script src="../assets/js/plugins/chartist.min.js"></script>
+  <script src="../../assets/js/plugins/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="../../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  <script src="../../assets/js/material-dashboard.min.js?v=2.1.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+  <script src="../../assets/demo/demo.js"></script>
+  <script src="../../assets/js/img_uploader.js"></script>
+  <script src="../../assets/js/createTrivia.js"></script>
   <script>
     $(document).ready(function () {
-      //init DateTimePickers
-      md.initFormExtendedDatetimepickers();
+      $().ready(function () {
+        $sidebar = $('.sidebar');
+
+        $sidebar_img_container = $sidebar.find('.sidebar-background');
+
+        $full_page = $('.full-page');
+
+        $sidebar_responsive = $('body > .navbar-collapse');
+
+        window_width = $(window).width();
+
+        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
+
+        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
+          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
+            $('.fixed-plugin .dropdown').addClass('open');
+          }
+
+        }
+
+        $('.fixed-plugin a').click(function (event) {
+          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
+          if ($(this).hasClass('switch-trigger')) {
+            if (event.stopPropagation) {
+              event.stopPropagation();
+            } else if (window.event) {
+              window.event.cancelBubble = true;
+            }
+          }
+        });
+
+        $('.fixed-plugin .active-color span').click(function () {
+          $full_page_background = $('.full-page-background');
+
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-color', new_color);
+          }
+
+          if ($full_page.length != 0) {
+            $full_page.attr('filter-color', new_color);
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.attr('data-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .background-color .badge').click(function () {
+          $(this).siblings().removeClass('active');
+          $(this).addClass('active');
+
+          var new_color = $(this).data('background-color');
+
+          if ($sidebar.length != 0) {
+            $sidebar.attr('data-background-color', new_color);
+          }
+        });
+
+        $('.fixed-plugin .img-holder').click(function () {
+          $full_page_background = $('.full-page-background');
+
+          $(this).parent('li').siblings().removeClass('active');
+          $(this).parent('li').addClass('active');
+
+
+          var new_image = $(this).find("img").attr('src');
+
+          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            $sidebar_img_container.fadeOut('fast', function () {
+              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+              $sidebar_img_container.fadeIn('fast');
+            });
+          }
+
+          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $full_page_background.fadeOut('fast', function () {
+              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+              $full_page_background.fadeIn('fast');
+            });
+          }
+
+          if ($('.switch-sidebar-image input:checked').length == 0) {
+            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
+            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
+
+            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
+            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
+          }
+
+          if ($sidebar_responsive.length != 0) {
+            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
+          }
+        });
+
+        $('.switch-sidebar-image input').change(function () {
+          $full_page_background = $('.full-page-background');
+
+          $input = $(this);
+
+          if ($input.is(':checked')) {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar_img_container.fadeIn('fast');
+              $sidebar.attr('data-image', '#');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page_background.fadeIn('fast');
+              $full_page.attr('data-image', '#');
+            }
+
+            background_image = true;
+          } else {
+            if ($sidebar_img_container.length != 0) {
+              $sidebar.removeAttr('data-image');
+              $sidebar_img_container.fadeOut('fast');
+            }
+
+            if ($full_page_background.length != 0) {
+              $full_page.removeAttr('data-image', '#');
+              $full_page_background.fadeOut('fast');
+            }
+
+            background_image = false;
+          }
+        });
+
+        $('.switch-sidebar-mini input').change(function () {
+          $body = $('body');
+
+          $input = $(this);
+
+          if (md.misc.sidebar_mini_active == true) {
+            $('body').removeClass('sidebar-mini');
+            md.misc.sidebar_mini_active = false;
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
+
+          } else {
+
+            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
+
+            setTimeout(function () {
+              $('body').addClass('sidebar-mini');
+
+              md.misc.sidebar_mini_active = true;
+            }, 300);
+          }
+
+          // we simulate the window Resize so the charts will get updated in realtime.
+          var simulateWindowResize = setInterval(function () {
+            window.dispatchEvent(new Event('resize'));
+          }, 180);
+
+          // we stop the simulation of Window Resize after the animations are completed
+          setTimeout(function () {
+            clearInterval(simulateWindowResize);
+          }, 1000);
+
+        });
+      });
     });
   </script>
+  <!-- Sharrre libray -->
+  <script src="../../assets/demo/jquery.sharrre.js"></script>
+  <script>
+    $(document).ready(function () {
+
+
+      $('#facebook').sharrre({
+        share: {
+          facebook: true
+        },
+        enableHover: false,
+        enableTracking: false,
+        enableCounter: false,
+        click: function (api, options) {
+          api.simulateClick();
+          api.openPopup('facebook');
+        },
+        template: '<i class="fab fa-facebook-f"></i> Facebook',
+        url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
+      });
+
+      $('#google').sharrre({
+        share: {
+          googlePlus: true
+        },
+        enableCounter: false,
+        enableHover: false,
+        enableTracking: true,
+        click: function (api, options) {
+          api.simulateClick();
+          api.openPopup('googlePlus');
+        },
+        template: '<i class="fab fa-google-plus"></i> Google',
+        url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
+      });
+
+      $('#twitter').sharrre({
+        share: {
+          twitter: true
+        },
+        enableHover: false,
+        enableTracking: false,
+        enableCounter: false,
+        buttons: {
+          twitter: {
+            via: 'CreativeTim'
+          }
+        },
+        click: function (api, options) {
+          api.simulateClick();
+          api.openPopup('twitter');
+        },
+        template: '<i class="fab fa-twitter"></i> Twitter',
+        url: 'https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html'
+      });
+
+
+      // Facebook Pixel Code Don't Delete
+      ! function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window,
+        document, 'script', '//connect.facebook.net/en_US/fbevents.js');
+
+      try {
+        fbq('init', '111649226022273');
+        fbq('track', "PageView");
+
+      } catch (err) {
+        console.log('Facebook Track Error:', err);
+      }
+
+    });
+  </script>
+  <script>
+    // Facebook Pixel Code Don't Delete
+    ! function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window,
+      document, 'script', '//connect.facebook.net/en_US/fbevents.js');
+
+    try {
+      fbq('init', '111649226022273');
+      fbq('track', "PageView");
+
+    } catch (err) {
+      console.log('Facebook Track Error:', err);
+    }
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=111649226022273&ev=PageView&noscript=1" />
+  </noscript>
+
+  <script>
+    $(document).ready(function () {
+      // initialise Datetimepicker and Sliders
+      md.initFormExtendedDatetimepickers();
+      if ($('.slider').length != 0) {
+        md.initSliders();
+      }
+    });
+  </script>
+
 </body>
 
 </html>

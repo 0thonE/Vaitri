@@ -1,5 +1,5 @@
 
-function pointsSelection() {
+function img_uploader() {
     let img_uploader=document.querySelectorAll(".img_uploader")[0];
     
     if(!img_uploader) return;
@@ -26,7 +26,8 @@ function pointsSelection() {
             el.classList.remove("hideable");
             el.classList.add("hiding");
         });
-
+        let input_file=img_uploader.querySelectorAll(".btn-file .fileinput-container")[0];
+        console.log(input_file.files[0]);
     });
     $(".btn_remove_img").bind("click",function(){
         let hiding=img_uploader.querySelectorAll(".hiding");
@@ -44,4 +45,4 @@ function pointsSelection() {
 }
 
 
-pointsSelection();
+img_uploader();

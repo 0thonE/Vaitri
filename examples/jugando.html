@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <!-- CSS Files -->
-  <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+  <link href="../assets/css/jugando.css" rel="stylesheet" />
 
 
 </head>
@@ -70,7 +70,7 @@
               <p>Home</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item  ">
             <!-- trivias -->
             <a class="nav-link" href="./dashboard.html">
               <i class="material-icons">dashboard</i>
@@ -84,7 +84,7 @@
               <p>User Profile</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item active">
             <!-- new trivia -->
             <a class="nav-link" href="./create-trivia.html">
               <i class="material-icons">note_add</i>
@@ -98,7 +98,7 @@
               <p>Programadas</p>
             </a>
           </li>
-          <li class="nav-item active ">
+          <li class="nav-item ">
             <!-- calendar -->
             <a class="nav-link" href="./calendar.html">
               <i class="material-icons">event</i>
@@ -196,61 +196,7 @@
 
         <div class="container-fluid">
           <div class="row ">
-            <div class="col-md-3 col-lg-2">
-              <div class="card card-product questions-side_bar">
-                <div class="question-cards-list">
-                  <!-- <div class="col-md-12">
-                    <div class="card card-product">
-                      <div class="card-header card-header-image" data-header-animation="true">
-                        <a href="#">
-                          <img class="question_img" src="../assets/img/image_placeholder.jpg">
-                        </a>
-                      </div>
-                      <div class="card-body">
-                        <div class="card-actions text-center">
-                          <button type="button" class="btn btn-danger btn-link fix-broken-card">
-                            <i class="material-icons">build</i> Fix Header!
-                          </button>
-                          <button type="button" class="btn btn-success btn-link btn_edit_question" rel="tooltip"
-                            data-placement="bottom" title="" data-original-title="Editar">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" class="btn btn-danger btn-link btn_delete_question" rel="tooltip"
-                            data-placement="bottom" title="" data-original-title="Borrar"
-                            aria-describedby="tooltip571092">
-                            <i class="material-icons">delete_outline</i>
-                          </button>
-                        </div>
-                        <h4 class="card-title">
-                          <a class="question_text" href="#">tu pregunta</a>
-                        </h4>
-                        <div class="card-description">
-                        </div>
-                      </div>
-                      <div class="card-footer">
-                        <div class="stats">
-                          <Strong><p class="valor_label">Valor</p></Strong>
-                        </div>
-                        <div class="stats">
-                          <p class="question_points"></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-                </div>
-
-                <!-- Nueva pregunta-->
-                <div class="card-footer question-cards-list_footer">
-                  <div class="stats">
-                    <div class="button-container">
-                      <button class="btn btn-primary btn-block btn-new_question">
-                        Nueva Pregunta
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+            <div class=" col-lg-1">
             </div>
 
             <!-- Pregunta -->
@@ -258,7 +204,7 @@
               <div class="card card-product card_question_fields">
                 <div class="card-header card-header-primary">
                   <h1 class="card-title"><input class="question_text" type="text"
-                      placeholder="Da click para escribir tu pregunta"></h1>
+                      placeholder="Da click para escribir tu pregunta" disabled></h1>
                 </div>
 
                 <div class="card-body">
@@ -266,45 +212,6 @@
                   <div class="row">
                     <!-- Seleccion de puntaje -->
                     <div class="col-md-3 points_col">
-
-                      <div class="row points-selection">
-                        <div class="col-sm-4"></div>
-                        <h4>Puntos por pregunta</h4>
-                      </div>
-                      <div class="row points-selection">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4">
-                          <div class="choice points_0" data-toggle="wizard-checkbox">
-                            <input type="radio" name="point" value="points_0">
-                            <div class="icon  ">
-                              <i class="material-icons">exposure_zero</i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row points-selection">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4">
-                          <div class="choice points_1" data-toggle="wizard-checkbox">
-                            <input type="radio" name="point" value="points_1">
-                            <div class="icon">
-                              <i class="material-icons">exposure_plus_1</i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row points-selection">
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4">
-                          <div class="choice points_2" data-toggle="wizard-checkbox">
-                            <input type="radio" name="point" value="points_2">
-                            <div class="icon">
-                              <i class="material-icons">exposure_plus_2</i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
                     </div>
                     <!-- Subir imagen -->
                     <div class="col-md-6">
@@ -314,31 +221,11 @@
                             <div class="fileinput-new thumbnail hideable img_holder">
                               <img src="../../assets/img/image_placeholder.jpg" alt="...">
                             </div>
-                            <div id="container" class="fileinput-preview fileinput-exists thumbnail" style="">
-                            </div>
-                          </div>
-                          <div>
-                            <span class="btn btn-rose btn-round btn-file">
-                              <span class="fileinput-new hideable">Agregar imagen </span>
-                              <span class="fileinput-exists hiding">Cambiar</span>
-                              <input type="hidden" value="" name="...">
-                              <input class="fileinput-container" type="file" name="" accept="image/png, image/jpeg">
-                              <div class="ripple-container"></div>
-                            </span>
-                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists btn_remove_img hiding"
-                              data-dismiss="fileinput"><i class="fa fa-times"></i> Remove<div class="ripple-container">
-                                <div class="ripple-decorator ripple-on ripple-out"
-                                  style="left: 48.4063px; top: 26.375px; background-color: rgb(255, 255, 255); transform: scale(15.5098);">
-                                </div>
-                                <div class="ripple-decorator ripple-on ripple-out"
-                                  style="left: 48.4063px; top: 26.375px; background-color: rgb(255, 255, 255); transform: scale(15.5098);">
-                                </div>
-                              </div>
-                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <div class="col-md-3">
                     </div>
                   </div>
@@ -348,93 +235,98 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-8" style="padding-bottom: .5em;">
                       <h3>Seleccione la(s) respuesta(s) correcta(s)</h3>
-                      <h6>Escriba minimo 2 respuestas</h6>
                     </div>
                   </div>
                   <!-- Opciones de respuesta -->
                   <div class="row question_answers">
                     <div class="col-md-6">
-                      <div class="alert alert-primary option_1">
+                      <div class="alert alert-primary not_displaying option_1">
                         <div class="form-check form-check-inline">
                           <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="checkbox" value="">&nbsp;&nbsp;&nbsp;
                             <span class="form-check-sign">
                               <span class="check"></span>
                             </span>
                           </label>
                         </div>
-                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
-                          </h3>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta"
+                            disabled>
+                          </h4>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="alert alert-primary option_2">
+                      <div class="alert alert-primary not_displaying option_2">
                         <div class="form-check form-check-inline">
                           <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="checkbox" value="">&nbsp;&nbsp;&nbsp;
                             <span class="form-check-sign">
                               <span class="check"></span>
                             </span>
                           </label>
                         </div>
-                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
-                          </h3>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta"
+                            disabled>
+                          </h4>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="alert alert-primary option_3">
+                      <div class="alert alert-primary not_displaying option_3">
                         <div class="form-check form-check-inline">
                           <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="checkbox" value="">&nbsp;&nbsp;&nbsp;
                             <span class="form-check-sign">
                               <span class="check"></span>
                             </span>
                           </label>
                         </div>
-                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
-                          </h3>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta"
+                            disabled>
+                          </h4>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="alert alert-primary option_4">
+                      <div class="alert alert-primary not_displaying option_4">
                         <div class="form-check form-check-inline">
                           <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="checkbox" value="">&nbsp;&nbsp;&nbsp;
                             <span class="form-check-sign">
                               <span class="check"></span>
                             </span>
                           </label>
                         </div>
-                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
-                          </h3>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta"
+                            disabled>
+                          </h4>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="alert alert-primary option_5">
+                      <div class="alert alert-primary not_displaying option_5">
                         <div class="form-check form-check-inline">
                           <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="checkbox" value="">&nbsp;&nbsp;&nbsp;
                             <span class="form-check-sign">
                               <span class="check"></span>
                             </span>
                           </label>
                         </div>
-                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
-                          </h3>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta"
+                            disabled>
+                          </h4>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="alert alert-primary option_6">
+                      <div class="alert alert-primary not_displaying option_6">
                         <div class="form-check form-check-inline">
                           <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="" disabled >&nbsp;&nbsp;&nbsp;
+                            <input class="form-check-input" type="checkbox" value="">&nbsp;&nbsp;&nbsp;
                             <span class="form-check-sign">
                               <span class="check"></span>
                             </span>
                           </label>
                         </div>
-                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta">
-                          </h3>
+                        <h4 class="card-title"><input type="text" placeholder="Da click para escribir una respuesta"
+                            disabled>
+                          </h4>
                       </div>
                     </div>
                   </div>
@@ -443,18 +335,14 @@
               </div>
             </div>
 
-            <div class="col-lg-2">
+            <!-- <div class=" col-lg-1">
+            </div> -->
+
+            <div class="col-lg-3">
               <div class="row">
                 <div class="col-lg-12">
                   <div class="card card-product done-card">
-                    <div class="card-footer ">
-                      <div class="stats">
-                        <div class="button-container">
-                          <button class="btn btn-primary btn-block btn-save">
-                            <h5><strong>Guardar Trivia</strong></h5>
-                          </button>
-                        </div>
-                      </div>
+                    <div class="card-footer">
                     </div>
                   </div>
                 </div>
@@ -468,43 +356,19 @@
               </div>
 
 
-              <div class="row" >
+              <div class="row">
                 <div class="col-lg-12">
-                  <div class="card card-product ">
-    
-                    <div class="card-body">
-                      <!-- Puntuacion e imagen -->
+                  <div class="card card-product done-card">
 
-                      <!-- Opciones de respuesta -->
-                      <div class="row question_answers">
-                        <div class="col-md-6 col-sm-12">
-                          <div class="alert alert-primary option_4">
-                            <h4 class="card-title"><input type="text" value="Fecha:" disabled></h4>
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                          <div class="alert alert-primary option_2">
-                            <h4 class="card-title"><input type="text" class="fecha_input fecha_dd" placeholder="dd"></h4>
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                          <div class="alert alert-primary option_5">
-                            <h4 class="card-title"><input type="text" class="fecha_input fecha_mm" placeholder="mm"></h4>
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                          <div class="alert alert-primary option_6">
-                            <h4 class="card-title"><input type="text" class="fecha_input fecha_yyyy" placeholder="yyyy"></h4>
-                          </div>
-                        </div>
-                      </div>
-    
+                    <div class="card-body">
+
                     </div>
 
-                    
+
                     <div class="card-header card-header-primary trivia_tritle">
-                      <h5 class="card-title "><input class="question_text trivia_name" type="text"
-                          placeholder="Nombre de la trivia"></h5>
+                      <button class="btn btn-primary btn-block btn-save">
+                        <h5><strong>Siguente</strong></h5>
+                      </button>
                     </div>
 
                   </div>
@@ -589,8 +453,8 @@
   <script src="../../assets/js/material-dashboard.min.js?v=2.1.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../../assets/demo/demo.js"></script>
-  <script src="../../assets/js/img_uploader.js"></script>
-  <script src="../../assets/js/createTrivia.js"></script>
+
+  <script src="../assets/js/playTrivia.js"></script>
   <script>
     $(document).ready(function () {
       $().ready(function () {

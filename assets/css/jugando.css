@@ -20012,6 +20012,9 @@ div.user {
 .alert.alert-primary.option_6 {
   background-color: rgb(255, 102, 0);
 }
+.alert.alert-primary.not_displaying {
+  display: none;
+}
 
 .card.done-card{
   position: absolute;
@@ -20038,5 +20041,13 @@ div.user {
 .trivia_tritle{
   background-color: #25b39b !important;
   position: absolute ;
-  bottom: -1.5em ;
+  bottom: .5em ;
 }
+
+.sidebar{
+  display: none !important;
+}
+.navbar{
+  display: none !important;
+}
+
