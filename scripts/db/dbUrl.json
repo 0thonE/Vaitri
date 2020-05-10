@@ -1,0 +1,3 @@
+{
+    "DB_URL" : "mongodb+srv://dbUser:testUser@cluster0-mpwi9.mongodb.net/Vaitri?retryWrites=true&w=majority"
+}

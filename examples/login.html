@@ -51,20 +51,20 @@
               <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="\about.html">Acerca </a>
+              <a class="nav-link" href="about.html">Acerca </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="\service.html">Complementos </a>
+              <a class="nav-link" href="service.html">Complementos </a>
             </li>
             <!--<li class="nav-item">
               <a class="nav-link" href="portfolio.html"> Portfolio</a>
             </li>-->
             <li class="nav-item">
               <!-- <a class="nav-link" href="juega.html" style="background-color:rgb(39, 47, 160);"> ¡Juega! </a> -->
-              <a class="nav-link" href="\juega.html" style="background-color:#9c27b0;"> ¡Juega! </a>
+              <a class="nav-link" href="juega.html" style="background-color:#9c27b0;"> ¡Juega! </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="\contact.html">Contact us</a>
+              <a class="nav-link" href="contact.html">Contact us</a>
             </li>
           </ul>
         </div>
@@ -90,12 +90,14 @@
     <div class="left">
       <h1>Registro</h1>
       
-      <input type="text" name="username" placeholder="Usuario" />
-      <input type="text" name="email" placeholder="E-mail" />
-      <input type="password" name="password" placeholder="Contraseña" />
-      <input type="password" name="password2" placeholder="Repita contraseña" />
-      
-      <input type="submit" name="signup_submit" value="Registrarse" />
+      <form id="form">
+        <input id="username" type="text" name="username" class="form-control" placeholder="Usuario" />
+        <input id="email" type="text" name="email" class="form-control" placeholder="E-mail" />
+        <input id="password" type="password" name="password" class="form-control" placeholder="Contraseña" />
+        <input id="password2" type="password" name="password2" class="form-control" placeholder="Repita contraseña" />
+        
+        <input id="registerBtn" type="submit" name="signup_submit" value="Registrarse" />
+    </form>
     </div>
     
     <div class="right">
@@ -109,6 +111,10 @@
   </div>
 </div>
 </body>
+
+<script src="/scripts/login.js">
+
+</script>
 
 <style>
   @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
