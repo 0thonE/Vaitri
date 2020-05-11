@@ -1,0 +1,45 @@
+###
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+    "nombre": "Dasw",
+    "apellido": "C",
+    "correo": "dasaw@iteso.com",
+    "password": "test",
+    "sexo": "H",
+    "fecha": "4-20-2020"
+}
+
+###
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "nombre": "Dasw",
+    "apellido": "Cruz",
+    "correo": "dasw@iteso.com",
+    "password": "test",
+    "sexo": "H",
+    "fecha": "4-20-2020"
+}
+
+###
+GET http://localhost:3000/user?nombre=da&apellido=C
+Content-Type: application/json
+x-auth-user: pcKML12tgI-3
+
+###
+GET  http://localhost:3000/user?page=1&limit=1
+Content-Type: application/json
+x-auth-user: DkDmSeZAo0-3
+
+###
+GET  http://localhost:3000/user/aris@iteso.com
+Content-Type: application/json
+x-auth-user: DkDmSeZAo0-3
+
+###
+DELETE  http://localhost:3000/user/dasw@iteso.com
+Content-Type: application/json
+x-auth-user: pcKML12tgI-3

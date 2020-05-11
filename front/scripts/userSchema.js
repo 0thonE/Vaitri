@@ -62,6 +62,7 @@ function crearUsuario(newUser){
     userMongo.save()
             .then((resp)=> console.log(resp))
             .catch((err)=>console.log(err))
+            //alert("Usuario creado exitosamente.");
 }
 
 /*let newUser = {
