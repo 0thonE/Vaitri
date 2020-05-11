@@ -1,7 +1,3 @@
-//const User = require('./userSchema');
-const mongoose = require('mongoose');
-const index = require('./index');
-const User = require('./userSchema');
 let registerBtn = document.getElementById("registerBtn");
 registerBtn.addEventListener("click", register);
 
@@ -21,36 +17,15 @@ function register(event) {
     
     
     event.preventDefault();
-
-    let newUser = {
-        "firstname": 'pp',
-        "lastname": 'gomez',
-        "username": 'ppgomez',
-        "email": 'email@email',
-        "password": 'password',
-        "trivia": []
-    }
     
-    User.createUsers(newUser);
+    //User.createUsers(newUser);
     
-    /*let str = JSON.stringify({
-            
-            //'firstname': firstname,
-            //'lastname': lastname,
+    let str = JSON.stringify({
             "username": username,
             "email": email,
             "password": password
 
-    });*/
-
-    /*let newUser = {
-        "firstname": '',
-        "lastname": '',
-        "username": username,
-        "email": email,
-        "password": password,
-        "trivia": []
-    }
+    });
 
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/user');
@@ -63,6 +38,6 @@ function register(event) {
             alert(xhr.status+ ': '+ xhr.statusText + "\n Creado.");
             location.href = 'jugando.html';
         }
-    }*/
+    }
 
 }

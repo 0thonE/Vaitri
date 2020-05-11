@@ -1,7 +1,7 @@
 'use strict'
 const mongoose = require('mongoose');
-let config = require('./db/dbUrl.json');
-
+let db = require('./db/dbUrl.json');
+let app = require('./app');
 /*
 let user = 'dbUser'
 let password = 'testUser'
@@ -11,9 +11,9 @@ const dbUrl = `mongodb+srv://${user}:${password}@cluster0-mpwi9.mongodb.net/${db
 */
 
 //let app = require('./app');
-let PORT = process.env.PORT || 3003;
+let PORT = process.env.PORT || 3000;
 
-mongoose.connect(config.DB_URL, {
+mongoose.connect(db.DB_URL, {
         useNewUrlParser: true,
         useCreateIndex: true, //atributo es unico
         useUnifiedTopology: true
@@ -21,11 +21,10 @@ mongoose.connect(config.DB_URL, {
     .then(()=>{
         console.log("\n\n====== Conection with DB established ======\n");
         
-        /*
         app.listen(PORT,()=>{
-            console.log("**** Local Server created in http://127.0.0.1:" + PORT + "****\n")
+            console.log("**** Local host in port: " + PORT + "****\n")
         });
-        */
+        
     })
     .catch(err => console.log(err));
 
