@@ -51,20 +51,20 @@
               <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">Acerca </a>
+              <a class="nav-link" href="\about.html">Acerca </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="service.html">Complementos </a>
+              <a class="nav-link" href="\service.html">Complementos </a>
             </li>
             <!--<li class="nav-item">
               <a class="nav-link" href="portfolio.html"> Portfolio</a>
             </li>-->
             <li class="nav-item">
               <!-- <a class="nav-link" href="juega.html" style="background-color:rgb(39, 47, 160);"> ¡Juega! </a> -->
-              <a class="nav-link" href="juega.html" style="background-color:#9c27b0;"> ¡Juega! </a>
+              <a class="nav-link" href="\juega.html" style="background-color:#9c27b0;"> ¡Juega! </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact us</a>
+              <a class="nav-link" href="\contact.html">Contact us</a>
             </li>
           </ul>
         </div>
@@ -90,34 +90,25 @@
     <div class="left">
       <h1>Registro</h1>
       
-      <form id="form" action="">
-        <input id="username" type="text" name="username" class="form-control" placeholder="Usuario" />
-        <input id="email" type="text" name="email" class="form-control" placeholder="E-mail" />
-        <input id="password" type="password" name="password" class="form-control" placeholder="Contraseña" />
-        <input id="password2" type="password" name="password2" class="form-control" placeholder="Repita contraseña" />
-        
-        <input id="registerBtn" type="submit" name="signup_submit" value="Registrarse" />
-    </form>
+      <input type="text" name="username" placeholder="Usuario" />
+      <input type="text" name="email" placeholder="E-mail" />
+      <input type="password" name="password" placeholder="Contraseña" />
+      <input type="password" name="password2" placeholder="Repita contraseña" />
+      
+    <input type="submit" name="signup_submit" value="Registrarse" onclick=" window.location.replace('./dashboard.html')"/>
     </div>
     
     <div class="right">
-      <span class="loginwith">Login</span>
+      <span class="loginwith">Registrarse con<br />redes sociales</span>
       
-      <form id="form_login" action="">
-        <input id="email_login" type="text" name="email" class="form-control" placeholder="E-mail" />
-        <input id="password_login" type="password" name="password" class="form-control" placeholder="Contraseña" />
-        
-        <input id="registerBtn_login" type="submit" name="signup_submit" value="Login" onclick="login()"/>
-    </form>
+      <button class="social-signin facebook">Entrar con Facebook</button>
+      <button class="social-signin twitter">Entrar con Twitter</button>
+      <button class="social-signin google">Entrar con Google+</button>
     </div>
     <div class="or">OR</div>
   </div>
 </div>
 </body>
-
-<script src="/scripts/login.js">
-
-</script>
 
 <style>
   @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
@@ -245,7 +236,7 @@ input[type="submit"]:active {
   display: block;
   margin-bottom: 40px;
   font-size: 28px;
-  color: black;
+  color: #FFF;
   text-align: center;
 }
 

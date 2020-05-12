@@ -42,17 +42,17 @@
             <div class="collapse" id="collapseExample">
               <ul class="nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="./user.html">
                     <span class="sidebar-mini">P</span>
                     <span class="sidebar-normal"> Perfil </span>
                   </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="#">
                     <span class="sidebar-mini">C</span>
                     <span class="sidebar-normal"> Configuración </span>
                   </a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -93,20 +93,20 @@
               <p>Programadas</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <!-- <li class="nav-item "> -->
             <!-- calendar -->
-            <a class="nav-link" href="./calendar.html">
+            <!-- <a class="nav-link" href="./calendar.html">
               <i class="material-icons">event</i>
               <p>Calendario</p>
             </a>
-          </li>
-          <li class="nav-item style=" display: none;"">
+          </li> -->
+          <!-- <li class="nav-item style=" display: none;""> -->
             <!-- icons -->
-            <a class="nav-link" href="./icons.html">
+            <!-- <a class="nav-link" href="./icons.html">
               <i class="material-icons">bubble_chart</i>
               <p>Icons</p>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item style=" display: none;"">
             <!-- notifications -->
             <a class="nav-link" href="./notifications.html">
@@ -191,7 +191,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-4">
-              <div class="card card-product" data-count="9">
+              <div class="card card-product card-trivia" >
                 <div class="card-header card-header-image" data-header-animation="true">
                   <a href="#pablo">
                     <img class="img" src="../assets/img/Trivias/innovation-trivia.jpg">
@@ -202,16 +202,17 @@
                     <button type="button" class="btn btn-danger btn-link fix-broken-card">
                       <i class="material-icons">build</i> Fix Header!
                     </button>
-                    <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom"
+                    <button type="button" class="btn btn-default btn-link view-trivia" rel="tooltip" data-placement="bottom"
                       title="" data-original-title="Ver" aria-describedby="tooltip700396" onclick="">
                       <i class="material-icons">art_track</i>
                     </button>
-                    <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom"
+                    <button type="button" class="btn btn-success btn-link edit-trivia" rel="tooltip" data-placement="bottom"
                       title="" data-original-title="Editar">
                       <i class="material-icons">edit</i>
                     </button>
-                    <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom" title=""
+                    <button type="button" class="btn btn-danger btn-link delete-trivia" rel="tooltip" data-placement="bottom" title=""
                       data-original-title="Eliminar" aria-describedby="tooltip571092">
+                      <!-- <i class="material-icons">delete_outline</i> -->
                       <i class="material-icons">close</i>
                     </button>
                   </div>
@@ -225,7 +226,8 @@
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">access_time</i> 24 hrs restantes
+                    <i class="material-icons">highlight_off</i> 24 hrs restantes
+                    <!-- <i class="material-icons">access_time</i> 24 hrs restantes -->
                   </div>
                   <div class="stats">
                     <p class="card-category"><i class="material-icons">person</i>0 personas respondieron</p>
@@ -233,7 +235,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
               <div class="card card-product" data-count="9">
                 <div class="card-header card-header-image" data-header-animation="true">
                   <a href="#pablo">
@@ -361,11 +363,12 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
           <!-- z-index 3 -->
-          <button class="btn btn-primary btn-round btn-fab btn-add">
+          <button class="btn btn-primary btn-round btn-fab btn-add"
+                  onclick=" window.location.replace('./create-trivia.html')">
             <i class="material-icons">add</i>
             <div class="ripple-container"></div>
           </button>
@@ -421,6 +424,9 @@
   <script src="../assets/js/plugins/arrive.min.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+
+  <script type="module" src="../assets/js/dashboard.js"></script>
+
 
   <script>
     $(document).ready(function () {
