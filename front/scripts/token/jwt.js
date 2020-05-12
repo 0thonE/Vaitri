@@ -1,5 +1,5 @@
 'use strict'
-
+//https://jwt.io/
 const jwt = require('jwt-simple');
 const moment = require('moment');
 const secret = 'clave_muy_secreta';

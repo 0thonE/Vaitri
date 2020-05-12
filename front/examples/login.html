@@ -96,16 +96,19 @@
         <input id="password" type="password" name="password" class="form-control" placeholder="Contraseña" />
         <input id="password2" type="password" name="password2" class="form-control" placeholder="Repita contraseña" />
         
-        <input id="registerBtn" type="button" name="signup_submit" value="Registrarse" />
+        <input id="registerBtn" type="submit" name="signup_submit" value="Registrarse" />
     </form>
     </div>
     
     <div class="right">
-      <span class="loginwith">Registrarse con<br />redes sociales</span>
+      <span class="loginwith">Login</span>
       
-      <button class="social-signin facebook">Entrar con Facebook</button>
-      <button class="social-signin twitter">Entrar con Twitter</button>
-      <button class="social-signin google">Entrar con Google+</button>
+      <form id="form_login" action="">
+        <input id="email_login" type="text" name="email" class="form-control" placeholder="E-mail" />
+        <input id="password_login" type="password" name="password" class="form-control" placeholder="Contraseña" />
+        
+        <input id="registerBtn_login" type="submit" name="signup_submit" value="Login" onclick="login()"/>
+    </form>
     </div>
     <div class="or">OR</div>
   </div>
@@ -242,7 +245,7 @@ input[type="submit"]:active {
   display: block;
   margin-bottom: 40px;
   font-size: 28px;
-  color: #FFF;
+  color: black;
   text-align: center;
 }
 
