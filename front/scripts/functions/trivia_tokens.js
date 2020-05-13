@@ -16,135 +16,77 @@ function addTrivia_token(req, res){
     
     console.log(trivia_token);
 
-    trivia_token.save((err, storedTrivia) => {
+    trivia_token.save((err, storedTrivia_token) => {
         if(err){
             console.log(err);
             res.status(500).send({mesage:'Server error.'});
         } else {
-            if(!storedTrivia){
+            if(!storedTrivia_token){
                 res.status(404).send({message:'Error while saving.'});
             } else {
-                res.status(201).send({message:'Trivia token created', trivia : storedTrivia});
+                res.status(201).send({message:'Trivia token created', trivia_token : storedTrivia_token});
             }
         }
     });
 }
 
-function getTrivias_Tokens(req, res){
-    let triviaId=req.params;
+function getTrivias_tokens(req, res){
     console.log(req.query);
 
-    Trivia_Tokens.find(req.query,(err, trivias) => {
+    Trivia_Tokens.find(req.query,(err, trivias_tokens) => {
     // Trivia_Tokens.find({trivia:triviaId},(err, trivias) => {
         if(err){
             console.log(err);
             res.status(500).send({message: 'Server error.'});
         }else{
-            if(Object.entries(trivias).length === 0){
+            if(Object.entries(trivias_tokens).length === 0){
                 res.status(404).send({message: "No trivia's tokens found."});
             }else{
-                res.status(200).send({message:`Trivia's tokens obtained`, results : trivias});
+                res.status(200).send({message:`Trivia's tokens obtained`, results : trivias_tokens});
             }
         }
     });
 }
 
-function getMyTrivias(req, res){
-    let ownerId = req.params.owner;
-
-    Trivia_Tokens.find({owner:ownerId},(err, myTrivias) => {
-        if(err){
-            console.log(err);
-            res.status(500).send({message: 'Server error.'});
-        }else{
-            if(Object.entries(myTrivias).length === 0){
-                res.status(404).send({message: 'No trivias found.'});
-            }else{
-                res.status(200).send({message:'Trivias obtained', results : myTrivias});
-            }
-        }
-    });
-}
-
-function getTriviaById(req,res){
-    let triviaId = req.params.id;
-    Trivia_Tokens.find({id: triviaId},(err,trivia) => {
-        if(err){
-            res.status(500).send({message: 'Server error.'});
-        }else{
-            if(Object.entries(trivia).length === 0){
-                res.status(404).send({message: 'Trivia not found.'});
-            }else{
-                res.status(200).send({message:'Trivia obtained', result : trivia});
-            }
-        }
-    });
-}
-
-function updateTrivia(req, res){
-    let triviaId = req.params.id;
+function updateTrivia_token(req, res){
     let update = req.body;
 
-    Trivia_Tokens.findOneAndUpdate({id: triviaId}, update, {new:true}, (err,updatedTrivia) =>{
+    Trivia_Tokens.findOneAndUpdate(req.query, update, {new:true}, (err,updatedTrivia_token) =>{
         if(err){
             console.log(err);
             res.status(500).send({message: 'Server error.'});
         }else{
-            if(!updatedTrivia){
+            if(!updatedTrivia_token){
                 res.status(404).send({message: 'Could not update the trivia.'});
             }else{
-                res.status(200).send({message:'Trivia updated', result : updatedTrivia})
+                res.status(200).send({message:'Trivia updated', result : updatedTrivia_token})
             }
         }
     });
 }
 
-function deleteTrivia(req, res){
+function deleteTrivia_Token(req, res){
     let triviaId = req.params.trivia_id;
     console.log(req.params);
 
-    Trivia_Tokens.deleteOne({_id: triviaId}, (err,deletedTrivia) =>{
+    Trivia_Tokens.deleteOne({_id: triviaId}, (err,deletedTrivia_token) =>{
     // Trivia.deleteOne({_id: "5ebb5c02d633ce19c0b9ddc3"}, (err,deletedTrivia) =>{
         if(err){
             console.log(err);
             res.status(500).send({message: 'Server error.'});
         }else{
-            if(!deletedTrivia){
+            if(!deletedTrivia_token){
                 res.status(404).send({message: 'Could not delete the trivia.'});
             }else{
-                res.status(200).send({message:'Trivia deleted', result : deletedTrivia})
+                res.status(200).send({message:'Trivia deleted', result : deletedTrivia_token})
             }
         }
     });
 }
 
-// function deleteTriviaByOwner(req, res){
-//     let ownerId = req.params.owner;
-//     console.log(req.params);
-
-//     Trivia.deleteMany({owner: ownerId}, (err,deletedTrivia) =>{
-//     // Trivia.deleteMany({_id: ownerId}, (err,deletedTrivia) =>{
-//     // Trivia.deleteOne({_id: "5ebb5c02d633ce19c0b9ddc3"}, (err,deletedTrivia) =>{
-//         if(err){
-//             console.log(err);
-//             res.status(500).send({message: 'Server error.'});
-//         }else{
-//             if(!deletedTrivia){
-//                 res.status(404).send({message: 'Could not delete the trivia.'});
-//             }else{
-//                 res.status(200).send({message:'Trivia deleted', result : deletedTrivia})
-//             }
-//         }
-//     });
-// }
-
-
 module.exports = {
     addTrivia_token,
-    getTrivias_Tokens,
-    getMyTrivias,
-    getTriviaById,
-    updateTrivia,
-    deleteTrivia,
-    // deleteTriviaByOwner,
+    getTrivias_tokens,
+    updateTrivia_token,
+    deleteTrivia_Token,
 };

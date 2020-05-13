@@ -528,7 +528,8 @@ function create_trivia_card(id,_title,_description,_answ_ppl,_state,_img ) {
 
 function view_trivia(id) {
     remove_tooltips();
-    alert('view '+id);
+    sessionStorage.setItem('triviaId',id);
+    window.location.replace("./results.html");
 }
 
 function edit_trivia(id) {

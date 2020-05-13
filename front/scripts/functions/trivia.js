@@ -33,7 +33,8 @@ function addTrivia(req, res){
 }
 
 function getTrivias(req, res){
-    Trivia.find({},(err, trivias) => {
+    console.log(req.query);
+    Trivia.find(req.query,(err, trivias) => {
         if(err){
             console.log(err);
             res.status(500).send({message: 'Server error.'});
@@ -64,8 +65,8 @@ function getMyTrivias(req, res){
 }
 
 function getTriviaById(req,res){
-    let triviaId = req.params.id;
-    Trivia.find({id: triviaId},(err,trivia) => {
+    let triviaId = req.params._id;
+    Trivia.find({_id: triviaId},(err,trivia) => {
         if(err){
             res.status(500).send({message: 'Server error.'});
         }else{

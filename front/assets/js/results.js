@@ -17,6 +17,7 @@ let tokens=[
 ]
 
 let trivia_tokens=[];
+let trivia_answers=[];
 
 let answers=[
     {
@@ -152,16 +153,18 @@ function create_token_card(token) {
 
 }
 
-function addParticipant(participant) {
-    
-    let time=`${participant.date.getHours()}:${participant.date.getMinutes()}`;
-    let date_format=
-        `${participant.date.getDate()}/${participant.date.getMonth()}/${participant.date.getFullYear()}`;
+function addParticipant(participant,id) {
+    let dateData=new Date(participant.date)
 
+    let time=`${dateData.getHours()}:${dateData.getMinutes()}`;
+    let date_format=
+        `${dateData.getDate()}/${dateData.getMonth()}/${dateData.getFullYear()}`;
+        
+        // ${participant._id}
     let row=`
         <tr>
             <td>
-                ${participant._id}
+                ${id}
             </td>
             <td>
                 ${participant.username}
@@ -176,12 +179,12 @@ function addParticipant(participant) {
                 ${participant.score}
             </td>
         </tr>`;
-    
-    let row_participant = document.querySelector(`.tok-${participant.token} tbody`);
+
+    let row_participant = document.querySelector(`.tok-${participant.trivia_token} tbody`);
 
     row_participant.innerHTML+=row;
-    
-        
+
+
 }
 
 function createToken() {
@@ -192,13 +195,13 @@ function createToken() {
     let end=picker_end.value;
     picker_start.classList.remove("invalid");
     picker_end.classList.remove("invalid");
-    if(start.lenght===0) 
+    if(start.lenght===0)
     picker_start.classList.add("invalid");
     if(end.lenght===0) {
         picker_end.classList.add("invalid");
         return;
     }
-    if(start.lenght===0) 
+    if(start.lenght===0)
         return
 
     // let startDate=new Date(start.substr(6,9),start.substr(3,4),start.substr(0,1));
@@ -210,17 +213,16 @@ function createToken() {
 
     // let currentTriviaId=JSON.parse(sessionStorage.getItem('currentTrivia')).id;
     let currentUser=JSON.parse(sessionStorage.getItem('user'));
+    let triviaId=sessionStorage.getItem('triviaId');
 
-    
     let trivia_tokenObj={
-        // trivia:currentTriviaId,
-        trivia:"sd63a5re4ga6rg5841avw",
+        trivia:triviaId,
         dateStart:startDate,
         dateStart:startDate,
         dateEnd:endDate,
         owner:currentUser._id,
     };
-    
+
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/trivia_token');
     xhr.setRequestHeader('content-type','application/json');
@@ -256,10 +258,40 @@ function view_results(){
     let token_card_list=document.querySelector('.content .row');
     token_card_list.innerHTML="";
 
-    let currentUser=JSON.parse(sessionStorage.getItem('user'));
+    let triviaId=sessionStorage.getItem('triviaId');
+
+    // state the query for the answers
+
+    let answ_params={
+        trivia:triviaId,
+    }
+
+    console.log(answ_params);
+
+    let xhr_answ = new XMLHttpRequest();
+    xhr_answ.open('GET', '/api/answers'+formatParams(answ_params));
+    xhr_answ.onload = function(){
+        if(xhr_answ.status != 200){
+            alert(xhr_answ.status+ ': '+ xhr_answ.statusText + "\n Un error ha ocurrido.");
+        }else{
+            // alert(xhr_answ.status+ ': '+ xhr_answ.statusText + "\n Exitoso");
+            let response = JSON.parse(xhr_answ.responseText);
+            console.log(response);
+            trivia_answers=response.results;
+            console.log(trivia_answers);
+            trivia_tokens.forEach(e => {
+                create_token_card(e._id);
+                let this_answers=trivia_answers.filter(a=> a.trivia_token==e._id )
+                this_answers.forEach((a,index) => {
+                    addParticipant(a,index+1)
+                });
+            });
+
+        }
+    }
 
     let params={
-        trivia:"sd63a5re4ga6rg5841avw",
+        trivia:triviaId,
     }
 
     console.log(formatParams(params));
@@ -277,19 +309,14 @@ function view_results(){
             console.log(response);
             trivia_tokens=response.results;
             console.log(trivia_tokens);
-            trivia_tokens.forEach(e => {
-                create_token_card(e._id);
-                let this_answers=answers.filter(a=> a.token==e.token )
-                this_answers.forEach(a => {
-                    addParticipant(a)
-                });
-            });
-            
+            xhr_answ.send();
+
         }
     }
 
 
-    
+
+
 }
 
 

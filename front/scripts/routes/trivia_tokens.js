@@ -7,7 +7,7 @@ const UserController = require('../functions/trivia_tokens');
 let api = express.Router();
 
 api.post('/trivia_token', UserController.addTrivia_token);
-api.get('/trivia_tokens',UserController.getTrivias_Tokens);
+api.get('/trivia_tokens',UserController.getTrivias_tokens);
 // api.get('/trivia_tokens/:owner',UserController.getMytTokensT);
 
 module.exports = api;
