@@ -16,6 +16,8 @@ let tokens=[
     },
 ]
 
+let trivia_tokens=[];
+
 let answers=[
     {
         id:365534,
@@ -103,6 +105,9 @@ let answers=[
     },
 ]
 
+let success_btn=document.querySelector('.modal-footer .btn.btn-primary.btn-success')
+success_btn.addEventListener('click',()=>createToken());
+
 function create_token_card(token) {
 
     let token_card=`
@@ -156,7 +161,7 @@ function addParticipant(participant) {
     let row=`
         <tr>
             <td>
-                ${participant.id}
+                ${participant._id}
             </td>
             <td>
                 ${participant.username}
@@ -179,21 +184,57 @@ function addParticipant(participant) {
         
 }
 
-function createToken(id) {
-    // 20/02/2345
+function createToken() {
+
     let picker_start=document.querySelectorAll('.modal-body .datepicker')[0];
     let picker_end=document.querySelectorAll('.modal-body .datepicker')[1];
     let start=picker_start.value;
     let end=picker_end.value;
     picker_start.classList.remove("invalid");
     picker_end.classList.remove("invalid");
-    if(start.lenght===0&&end.lenght===0) {
-        picker_start.classList.add("invalid");
+    if(start.lenght===0) 
+    picker_start.classList.add("invalid");
+    if(end.lenght===0) {
         picker_end.classList.add("invalid");
         return;
     }
-    let startDate=new Date(start.substr(6,9),start.substr(3,4),start.substr(0,1))
-    let endDate=new Date(end.substr(6,9),end.substr(3,4),end.substr(0,1))
+    if(start.lenght===0) 
+        return
+
+    // let startDate=new Date(start.substr(6,9),start.substr(3,4),start.substr(0,1));
+    let startDate=new Date(start.substr(6,9),start.substr(3,2),start.substr(0,2));
+    let endDate=new Date(end.substr(6,9),end.substr(3,2),end.substr(0,2));
+    // let endDate=new Date(end.substr(6,9),end.substr(3,4),end.substr(0,1));
+    console.log(startDate);
+    console.log(endDate);
+
+    // let currentTriviaId=JSON.parse(sessionStorage.getItem('currentTrivia')).id;
+    let currentUser=JSON.parse(sessionStorage.getItem('user'));
+
+    
+    let trivia_tokenObj={
+        // trivia:currentTriviaId,
+        trivia:"sd63a5re4ga6rg5841avw",
+        dateStart:startDate,
+        dateStart:startDate,
+        dateEnd:endDate,
+        owner:currentUser._id,
+    };
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/trivia_token');
+    xhr.setRequestHeader('content-type','application/json');
+    xhr.send(JSON.stringify(trivia_tokenObj));
+    xhr.onload = function(){
+        if(xhr.status != 201){
+            alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
+        }else{
+            view_results();
+            let close_btn=document.querySelector('.modal-footer .btn.btn-secondary.btn-danger')
+            close_btn.click();
+        }
+    }
+
 
     // send to db
 
@@ -201,14 +242,54 @@ function createToken(id) {
 
 }
 
+
+function formatParams( params ){
+    return "?" + Object
+          .keys(params)
+          .map(function(key){
+            return key+"="+encodeURIComponent(params[key])
+          })
+          .join("&")
+  }
+
 function view_results(){
-    tokens.forEach(e => {
-        create_token_card(e.token);
-        let this_answers=answers.filter(a=> a.token==e.token )
-        this_answers.forEach(a => {
-            addParticipant(a)
-        });
-    });
+    let token_card_list=document.querySelector('.content .row');
+    token_card_list.innerHTML="";
+
+    let currentUser=JSON.parse(sessionStorage.getItem('user'));
+
+    let params={
+        trivia:"sd63a5re4ga6rg5841avw",
+    }
+
+    console.log(formatParams(params));
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/trivia_tokens'+formatParams(params));
+    // xhr.setRequestHeader('content-type','application/json');
+    xhr.send();
+    xhr.onload = function(){
+        if(xhr.status != 200){
+            alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
+        }else{
+            // alert(xhr.status+ ': '+ xhr.statusText + "\n Exitoso");
+
+            let response = JSON.parse(xhr.responseText);
+            console.log(response);
+            trivia_tokens=response.results;
+            console.log(trivia_tokens);
+            trivia_tokens.forEach(e => {
+                create_token_card(e._id);
+                let this_answers=answers.filter(a=> a.token==e.token )
+                this_answers.forEach(a => {
+                    addParticipant(a)
+                });
+            });
+            
+        }
+    }
+
+
+    
 }
 
 

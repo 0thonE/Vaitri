@@ -1,24 +1,22 @@
 'use strict'
 
-let Trivia = require('../schemas/triviaSchema');
+let Trivia_Tokens = require('../schemas/trivia_tokensSchema');
 
 
-function addTrivia(req, res){    
+function addTrivia_token(req, res){    
 
-    let trivia = new Trivia();
-
+    let trivia_token = new Trivia_Tokens();
 
     let params = req.body;
 
-    trivia.name = params.name;
-    trivia.description = params.description;
-    trivia.date = params.date;
-    trivia.questions = params.questions;
-    trivia.owner = params.owner;
+    trivia_token.trivia = params.trivia;
+    trivia_token.dateStart = params.dateStart;
+    trivia_token.dateEnd = params.dateEnd;
+    trivia_token.owner = params.owner;
     
-    console.log(trivia);
+    console.log(trivia_token);
 
-    trivia.save((err, storedTrivia) => {
+    trivia_token.save((err, storedTrivia) => {
         if(err){
             console.log(err);
             res.status(500).send({mesage:'Server error.'});
@@ -26,30 +24,35 @@ function addTrivia(req, res){
             if(!storedTrivia){
                 res.status(404).send({message:'Error while saving.'});
             } else {
-                res.status(201).send({message:'Trivia created', trivia : storedTrivia});
+                res.status(201).send({message:'Trivia token created', trivia : storedTrivia});
             }
         }
     });
 }
 
-function getTrivias(req, res){
-    Trivia.find({},(err, trivias) => {
+function getTrivias_Tokens(req, res){
+    let triviaId=req.params;
+    console.log(req.query);
+
+    Trivia_Tokens.find(req.query,(err, trivias) => {
+    // Trivia_Tokens.find({trivia:triviaId},(err, trivias) => {
         if(err){
             console.log(err);
             res.status(500).send({message: 'Server error.'});
         }else{
             if(Object.entries(trivias).length === 0){
-                res.status(404).send({message: 'No trivias found.'});
+                res.status(404).send({message: "No trivia's tokens found."});
             }else{
-                res.status(200).send({message:'Trivias obtained', results : trivias});
+                res.status(200).send({message:`Trivia's tokens obtained`, results : trivias});
             }
         }
     });
 }
+
 function getMyTrivias(req, res){
     let ownerId = req.params.owner;
 
-    Trivia.find({owner:ownerId},(err, myTrivias) => {
+    Trivia_Tokens.find({owner:ownerId},(err, myTrivias) => {
         if(err){
             console.log(err);
             res.status(500).send({message: 'Server error.'});
@@ -65,7 +68,7 @@ function getMyTrivias(req, res){
 
 function getTriviaById(req,res){
     let triviaId = req.params.id;
-    Trivia.find({id: triviaId},(err,trivia) => {
+    Trivia_Tokens.find({id: triviaId},(err,trivia) => {
         if(err){
             res.status(500).send({message: 'Server error.'});
         }else{
@@ -82,7 +85,7 @@ function updateTrivia(req, res){
     let triviaId = req.params.id;
     let update = req.body;
 
-    Trivia.findOneAndUpdate({id: triviaId}, update, {new:true}, (err,updatedTrivia) =>{
+    Trivia_Tokens.findOneAndUpdate({id: triviaId}, update, {new:true}, (err,updatedTrivia) =>{
         if(err){
             console.log(err);
             res.status(500).send({message: 'Server error.'});
@@ -100,7 +103,7 @@ function deleteTrivia(req, res){
     let triviaId = req.params.trivia_id;
     console.log(req.params);
 
-    Trivia.deleteOne({_id: triviaId}, (err,deletedTrivia) =>{
+    Trivia_Tokens.deleteOne({_id: triviaId}, (err,deletedTrivia) =>{
     // Trivia.deleteOne({_id: "5ebb5c02d633ce19c0b9ddc3"}, (err,deletedTrivia) =>{
         if(err){
             console.log(err);
@@ -137,8 +140,8 @@ function deleteTrivia(req, res){
 
 
 module.exports = {
-    addTrivia,
-    getTrivias,
+    addTrivia_token,
+    getTrivias_Tokens,
     getMyTrivias,
     getTriviaById,
     updateTrivia,

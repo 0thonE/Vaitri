@@ -8,6 +8,9 @@ let api = express.Router();
 
 api.post('/trivia', UserController.addTrivia);
 api.get('/trivias',UserController.getTrivias);
-api.get('/trivias/id/:id',UserController.getTriviaById);
+api.get('/trivias/:owner',UserController.getMyTrivias);
+// api.delete('/trivias/:owner',UserController.deleteTriviaByOwner);
+api.delete('/trivias',UserController.deleteTrivia);
+api.delete('/trivias/:trivia_id',UserController.deleteTrivia);
 
 module.exports = api;

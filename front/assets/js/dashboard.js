@@ -1,5 +1,6 @@
 // import { load_new_trivia } from './createTrivia.js';
 
+let trivias=[];
 
 let pretrivias = [
     {
@@ -519,7 +520,7 @@ function create_trivia_card(id,_title,_description,_answ_ppl,_state,_img ) {
     });
     let last_delete_button=trivias_board.querySelectorAll('.delete-trivia')[last_el_index];
     last_delete_button.addEventListener('click',(event)=>{
-        delete_trivis(id,t_card);
+        delete_trivia(id,t_card);
     });
         
 }
@@ -543,11 +544,34 @@ function edit_trivia(id) {
     window.location.replace('./create-trivia.html');
 }
 
-function delete_trivis(id,t_card) {
+function delete_trivia(id,t_card) {
     remove_tooltips();
     // alert('delete '+id);
-    let trivias_board=document.querySelector('.content .row');
-    trivias_board.removeChild(t_card)
+    
+    
+    let params={
+        trivia_id:id,
+    }
+
+
+    console.log(formatParams(params));
+    let xhr = new XMLHttpRequest();
+    xhr.open('DELETE', '/api/trivias'+formatParams(params));
+    // xhr.setRequestHeader('content-type','application/json');
+    xhr.send(null);
+    xhr.onload = function(){
+        if (xhr.readyState == 4 && xhr.status == "200") {
+            let response = JSON.parse(xhr.responseText);
+            console.log(response);
+            let trivias_board=document.querySelector('.content .row');
+            trivias_board.removeChild(t_card)
+        } else {
+            alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
+        }
+    }
+
+    // let trivias_board=document.querySelector('.content .row');
+    // trivias_board.removeChild(t_card)
 }
 
 function remove_tooltips() {
@@ -559,14 +583,55 @@ function remove_tooltips() {
 
 }
 
+function formatParams( params ){
+    return "?" + Object
+          .keys(params)
+          .map(function(key){
+            return key+"="+encodeURIComponent(params[key])
+          })
+          .join("&")
+  }
+
 function create_new_triviaDashboard(){
     
-    pretrivias.forEach(e => {
-        let question=e.questions.find(q => {
-            return q.img_src.length>0
-        });
-        create_trivia_card(e.idTrivia,e.name,e.description,6,true,question.img_src);
-    });
+    let params={
+        owner:JSON.parse(sessionStorage.getItem("user"))._id,
+    }
+
+    console.log(formatParams(params));
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/trivias'+formatParams(params));
+    // xhr.setRequestHeader('content-type','application/json');
+    xhr.send();
+    xhr.onload = function(){
+        if(xhr.status != 200){
+            alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
+        }else{
+            // alert(xhr.status+ ': '+ xhr.statusText + "\n Exitoso");
+
+            let response = JSON.parse(xhr.responseText);
+            console.log(response);
+            trivias=response.results;
+            console.log(trivias);
+            trivias.forEach(e => {
+                // let question=e.questions.find(q => {
+                //     return q.img_src!==undefined&&q.img_src!==null&&q.img_src!=="";
+                // });
+                // create_trivia_card(e.idTrivia,e.name,e.description,6,true,question.img_src);
+                create_trivia_card(e._id,e.name,e.description,6,true);
+            });
+            
+        }
+    }
+
+    // pretrivias.forEach(e => {
+    //     let question=e.questions.find(q => {
+    //         return q.img_src.length>0
+    //     });
+    //     create_trivia_card(e.idTrivia,e.name,e.description,6,true,question.img_src);
+    // });
+
+   
 }
 
 
