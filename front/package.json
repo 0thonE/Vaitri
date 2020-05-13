@@ -8,7 +8,7 @@
   },
   "scripts": {
     "open-app": "gulp open-app",
-    "start": "npm run open-app",
+    "start": "node ../scripts/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "gulp watch"
   },
@@ -57,5 +57,8 @@
     "jwt-simple": "^0.5.6",
     "moment": "^2.25.3",
     "mongoose": "^5.9.13"
+  },
+  "engines": {
+    "node": "12.13.0"
   }
 }

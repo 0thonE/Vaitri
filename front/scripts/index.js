@@ -11,7 +11,7 @@ const dbUrl = `mongodb+srv://${user}:${password}@cluster0-mpwi9.mongodb.net/${db
 */
 
 //let app = require('./app');
-let PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 3000;//VAriable de entorno del SO || 3000
 
 mongoose.connect(db.DB_URL, {
         useNewUrlParser: true,
