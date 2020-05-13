@@ -223,13 +223,13 @@ The above copyright notice and this permission notice shall be included in all c
                       <div class="col-md-3">
                         <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating">Nombre de usuario</label>
-                          <input type="text" class="form-control" >
+                          <input id="username" type="text" class="form-control" >
                         </div>
                       </div>
                       <div class="col-md-4">
                         <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating">Correo</label>
-                          <input type="email" class="form-control" disabled>
+                          <input id="email" type="email" class="form-control" disabled>
                         </div>
                       </div>
                     </div>
@@ -237,13 +237,13 @@ The above copyright notice and this permission notice shall be included in all c
                       <div class="col-md-6">
                         <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating">Nombre(s)</label>
-                          <input type="text" class="form-control">
+                          <input id="firstname" type="text" class="form-control">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating">Apellidos</label>
-                          <input type="text" class="form-control">
+                          <input id="lastname" type="text" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -253,12 +253,24 @@ The above copyright notice and this permission notice shall be included in all c
                           <label>Acerca de mi</label>
                           <div class="form-group bmd-form-group">
                             <label class="bmd-label-floating">Quien eres, para quien trabajas y por que haces las trivias</label>
-                            <textarea class="form-control" rows="5"></textarea>
+                            <textarea id="acercademi" class="form-control" rows="5"></textarea>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-rose pull-right">Update Profile</button>
+                    <div class="col-md-6">
+                      <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating">Contraseña</label>
+                        <input id="password" type="password" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group bmd-form-group">
+                        <label class="bmd-label-floating">Confirmar contraseña para hacer update</label>
+                        <input id="password2" type="password" class="form-control">
+                      </div>
+                    </div>
+                    <button id="updateBtn" type="submit" class="btn btn-rose pull-right">Update Profile</button>
                     <div class="clearfix"></div>
                   </form>
                 </div>
@@ -293,6 +305,9 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
   </div>
   <!--   Core JS Files   -->
+
+<script src="../scripts/profile.js"></script>
+
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>

@@ -19,6 +19,10 @@ function register(event) {
     event.preventDefault();
     
     let str = JSON.stringify({
+            "firstname" : '',
+            "lastname" : '',
+            "acerca" : '',
+            "trivia": [],
             "username": username,
             "email": email,
             "password": password
@@ -33,7 +37,7 @@ function register(event) {
         if(xhr.status != 201){
             alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
         }else{
-            alert(xhr.status+ ': '+ xhr.statusText + "\nUsuario creado, ya puede hacer login!");
+        alert(xhr.status+ ': '+ xhr.statusText + "\nUsuario creado, ya puede hacer login!");
             location.href = '../examples/login.html';
         }
     }
@@ -70,3 +74,18 @@ function login(evt) {
         xhr.send(str);
     }
 }
+
+function verify(token){
+
+}
+
+
+function init(){
+    let token = sessionStorage.getItem("token");
+    let user = JSON.parse(sessionStorage.getItem("user"));
+    if(sessionStorage.token){
+        window.location = '../dashboard.html';
+    };
+}
+
+init();
