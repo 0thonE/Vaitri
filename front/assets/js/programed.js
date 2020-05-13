@@ -78,15 +78,83 @@ let programed=[
     },
 ];
 
-function createTimeline(arr) {
-    let timeline=document.querySelector('.card.card-timeline.card-plain ul.timeline');
+let programed_tokens=[];
+let trivias=[];
+
+
+function formatParams( params ){
+    return "?" + Object
+          .keys(params)
+          .map(function(key){
+            return key+"="+encodeURIComponent(params[key])
+          })
+          .join("&")
+  }
+
+
+// function createTimeline(arr) {
+function createTimeline() {
+
     
-    arr.forEach(e => {
-        timeline.innerHTML+=
-            render_timeline_card(e.title,e.token,e.dateStart,e.dateEnd);
-    });
+    let params={
+        owner:JSON.parse(sessionStorage.getItem("user"))._id,
+    }
+
+    console.log(formatParams(params));
+    let xhr_trivias = new XMLHttpRequest();
+    xhr_trivias.open('GET', '/api/trivias'+formatParams(params));
+    // xhr_trivias.setRequestHeader('content-type','application/json');
+    xhr_trivias.onload = function(){
+        if(xhr_trivias.status != 200){
+            alert(xhr_trivias.status+ ': '+ xhr_trivias.statusText + "\n Un error ha ocurrido.");
+        }else{
+            // alert(xhr_trivias.status+ ': '+ xhr_trivias.statusText + "\n Exitoso");
+
+            let response = JSON.parse(xhr_trivias.responseText);
+            console.log(response);
+            trivias=response.results;
+            console.log(trivias);
+
+            
+            let timeline=document.querySelector('.card.card-timeline.card-plain ul.timeline');
+            console.log(timeline);
+            // arr.forEach(e => {
+            programed_tokens.forEach(e => {
+                let currentTrivia=trivias.find(trivia=>trivia._id===e.trivia)
+                timeline.innerHTML+=
+                    render_timeline_card((currentTrivia)?currentTrivia.name:undefined,
+                        e._id,e.dateStart,e.dateEnd);
+            });
+            
+        }
+    }
+
+    console.log(formatParams(params));
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/trivia_tokens'+formatParams(params));
+    // xhr.setRequestHeader('content-type','application/json');
+    xhr.send();
+    xhr.onload = function(){
+        if(xhr.status != 200){
+            alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
+        }else{
+            // alert(xhr.status+ ': '+ xhr.statusText + "\n Exitoso");
+
+            let response = JSON.parse(xhr.responseText);
+            console.log(response);
+            trivia_tokens=response.results;
+            console.log(trivia_tokens);
+            programed_tokens=trivia_tokens;
+            console.log(programed_tokens);
+            xhr_trivias.send();
+
+        }
+    }
+
+
 
 }
+
 let id=0;
 
 function render_timeline_card(triviaTitle,token,dateStart,dateEnd) {
@@ -127,7 +195,8 @@ function render_timeline_card(triviaTitle,token,dateStart,dateEnd) {
                     </div>
                 </div>
                 <h6 class="date-frame">
-                    ${dateStart} - ${dateEnd}
+                    del: ${dateStart} 
+                    al:  ${dateEnd}
                 </h6>
             </div>
         </li>`;  
@@ -135,4 +204,5 @@ function render_timeline_card(triviaTitle,token,dateStart,dateEnd) {
 }
 
 
-createTimeline(programed);
+createTimeline();
+// createTimeline(programed);
