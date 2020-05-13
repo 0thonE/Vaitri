@@ -1,6 +1,7 @@
 'use strict'
 
 let Trivia = require('../schemas/triviaSchema');
+let fs = require('fs')
 
 
 function addTrivia(req, res){    
@@ -13,8 +14,28 @@ function addTrivia(req, res){
     trivia.name = params.name;
     trivia.description = params.description;
     trivia.date = params.date;
-    trivia.questions = params.questions;
     trivia.owner = params.owner;
+    // trivia.questions = params.questions;
+    trivia.questions = params.questions.map((e)=>{
+        let img="";
+        let filename="poorfilename";
+        if(e.img_src=""){
+            img=e.img_src.replace("data:image/png;base64,", "");
+            filename=Math.random().toString() + ".jpg"
+            fs.writeFile("public/upload/"+filename,img,'base64',(err)=>{
+                
+            })
+        }
+        return ({
+            text:e.text,
+            points:e.points,
+            answers:e.answers,
+            image:fl,
+            valid:e.valid,
+            id:e.id,
+        });
+    });
+
     
     console.log(trivia);
 
