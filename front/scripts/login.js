@@ -33,7 +33,7 @@ function register(event) {
         if(xhr.status != 201){
             alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
         }else{
-            alert(xhr.status+ ': '+ xhr.statusText + "\nUsuario creado, ya puede hacer login!");
+            // alert(xhr.status+ ': '+ xhr.statusText + "\nUsuario creado, ya puede hacer login!");
             location.href = '../examples/login.html';
         }
     }

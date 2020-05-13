@@ -418,19 +418,18 @@ function save_trivia(){
     });
     if(!validTrivia){
         alert(`
-    Por favor llene todas la preguntas.
-    Cada una minimo con una pregunta y 2 respuestas.
-    Seleccione al menos una como correcta`);
-    return;
-}
+        Por favor llene todas la preguntas.
+        Cada una minimo con una pregunta y 2 respuestas.
+        Seleccione al menos una como correcta`);
+        return;
+    }
     
     let description=document.querySelectorAll('.card-product .description_input');
     let descriptionText="";
     description.forEach(element => {
-        description+=`${element.value}.
-        `;
+        descriptionText+=`${element.value}. `;
     });
-    // let fecha_inputs=document.querySelectorAll('.card-product .fecha_input');
+    let fecha_inputs=document.querySelectorAll('.card-product .fecha_input');
     // fecha_inputs.forEach(element => {
     //     // if(element.value.length<2) validTriviaData=false
     // });
@@ -439,25 +438,56 @@ function save_trivia(){
     
     if(!validTriviaData){
         alert(`
-    Por favor llene los datos de la trivia.
-    Llene los datos de la fecha en que se agenda.
-    Asegurese de que la trivia tenga nombre`);
-    return;
-}
+        Por favor llene los datos de la trivia.
+        Llene los datos de la fecha en que se agenda.
+        Asegurese de que la trivia tenga nombre`);
+        return;
+    }
+    let currentUser= JSON.parse(sessionStorage.getItem("user"));
+
+    let questionsNoImage= questions_list.map(question=>{
+        return ({
+            text:question.text,
+            points:question.points,
+            answers:question.answers,
+            valid:question.valid,
+            id:question.id,
+        });
+    })
 
     let triviaObj={
-        idTrivia:Date.now(),
-        name:trivia_name,
+        name:trivia_name.value,
         description:descriptionText,
         date:fecha_inputs[0].value+"/"+
                     fecha_inputs[1].value+"/"+
                     fecha_inputs[2].value,
-        questions:questions_list,
+        questions:questionsNoImage,
+        // questions:questions_list,
+        owner:currentUser._id,
     };
-    let sess_triv= JSON.parse(sessionStorage.getItem("trivias") || "[]");
-    sess_triv.push(triviaObj);
-    sessionStorage.setItem("trivias", JSON.stringify(sess_triv));
-    window.location.replace("./dashboard.html")
+    // let tryo={
+    //     name:trivia_name.value,
+    //     description:"texto descriptivo",
+    //     date:"12/05/2020",
+    //     questions:"questionsNoImage",
+    //     questions:questions_list,
+    //     owner:"5eb776cc231fb069b86a3f50",
+    // };
+
+    
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/trivia');
+    xhr.setRequestHeader('content-type','application/json');
+    xhr.send(JSON.stringify(triviaObj));
+    xhr.onload = function(){
+        if(xhr.status != 201){
+            alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
+        }else{
+            alert(xhr.status+ ': '+ xhr.statusText + "\nTrivia creada, la podra encontrar en su dashboard de trivias");
+            window.location.replace("./dashboard.html")
+        }
+    }
+
 
 }
 let trivia_now;
@@ -484,8 +514,8 @@ pointsSelection();
 create_new_trivia();
 createTrivia_controls();
 
-setTimeout(() => {
-    load_new_trivia(pretrivia);
-}, 5000);
+// setTimeout(() => {
+//     load_new_trivia(pretrivia);
+// }, 5000);
 
 exports = {load_new_trivia};
