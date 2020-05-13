@@ -75,37 +75,6 @@ function getUsers(req, res){
     });
 }
 
-/*function getUsersPage(req, res){
-    User.find({skip: req.skip, limit: req.limit},(err, users) => {
-        if(err){
-            console.log(err);
-            res.status(500).send({message: 'Server error.'});
-        }else{
-            if(Object.entries(users).length === 0){
-                res.status(404).send({message: 'No users found.'});
-            }else{
-                res.status(200).send({message:'Users obtained', result : users});
-            }
-        }
-    });
-}
-
-function getUserById(req,res){
-    let userId = req.params.id;
-    User.findById(userId,(err,user) => {
-        if(err){
-            console.log(err);
-            res.status(500).send({message: 'Server error.'});
-        }else{
-            if(Object.entries(user).length === 0){
-                res.status(404).send({message: 'User not found.'});
-            }else{
-                res.status(200).send({message:'User obtained', result : user});
-            }
-        }
-    });
-}*/
-
 function getUserByUsername(req,res){
     let username = req.params.username;
     User.find({username: username},(err,user) => {

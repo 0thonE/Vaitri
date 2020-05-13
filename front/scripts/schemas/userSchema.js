@@ -25,6 +25,10 @@ let userSchema = mongoose.Schema({
     trivia:{
         type: Array,
         required: false
+    },
+    acerca:{
+        type: String,
+        required: false
     }
 })
 

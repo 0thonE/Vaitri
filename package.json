@@ -2,13 +2,13 @@
   "name": "material-dashboard",
   "version": "2.1.2",
   "description": "Material Dasboard, a Google Material Desgin. Coded by Creative Tim",
-  "main": "index.html",
+  "main": "front/examples/index.html",
   "directories": {
     "example": "root"
   },
   "scripts": {
     "open-app": "gulp open-app",
-    "start": "node ../scripts/index.js",
+    "start": "node front/scripts/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "gulp watch"
   },
