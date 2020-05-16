@@ -534,32 +534,24 @@ function view_trivia(id) {
 
 function edit_trivia(id) {
     remove_tooltips();
-    let triv=pretrivias.find(t=>{
-        return t.idTrivia=id
+    let triv=trivias.find(t=>{
+        return t._id===id
+    
     })
+    sessionStorage.setItem('editTrivia',JSON.stringify(triv));
 
-    setTimeout(() => {
-        console.log(trivia);
-        load_new_trivia(triv)
-    }, 3000);
-    window.location.replace('./create-trivia.html');
+    window.location.replace('./edit-trivia.html');
 }
 
 function delete_trivia(id,t_card) {
     remove_tooltips();
-    // alert('delete '+id);
-    
-    
-    let params={
-        trivia_id:id,
-    }
 
+    console.log(id);
 
-    console.log(formatParams(params));
     let xhr = new XMLHttpRequest();
-    xhr.open('DELETE', '/api/trivias'+formatParams(params));
-    // xhr.setRequestHeader('content-type','application/json');
-    xhr.send(null);
+    xhr.open('DELETE', '/api/trivia/'+id);
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
+    xhr.send();
     xhr.onload = function(){
         if (xhr.readyState == 4 && xhr.status == "200") {
             let response = JSON.parse(xhr.responseText);
@@ -603,6 +595,7 @@ function create_new_triviaDashboard(){
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/trivias'+formatParams(params));
     // xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr.send();
     xhr.onload = function(){
         if(xhr.status != 200){
@@ -615,22 +608,12 @@ function create_new_triviaDashboard(){
             trivias=response.results;
             console.log(trivias);
             trivias.forEach(e => {
-                // let question=e.questions.find(q => {
-                //     return q.img_src!==undefined&&q.img_src!==null&&q.img_src!=="";
-                // });
-                // create_trivia_card(e.idTrivia,e.name,e.description,6,true,question.img_src);
-                create_trivia_card(e._id,e.name,e.description,6,true);
+                create_trivia_card(e._id,e.name,e.description,"",true,);
             });
             
         }
     }
 
-    // pretrivias.forEach(e => {
-    //     let question=e.questions.find(q => {
-    //         return q.img_src.length>0
-    //     });
-    //     create_trivia_card(e.idTrivia,e.name,e.description,6,true,question.img_src);
-    // });
 
    
 }

@@ -1,110 +1,110 @@
-let tokens=[
-    {
-        token:"ASD586F46SA5DF4"
-    },
-    {
-        token:"6S5DFSDF514A364"
-    },
-    {
-        token:"EF5T4NYYEFA5T84"
-    },
-    {
-        token:"QJ3WKUWJWRTHHET"
-    },
-    {
-        token:"J4NH4JYRWYRNJTY"
-    },
-]
+// let tokens=[
+//     {
+//         token:"ASD586F46SA5DF4"
+//     },
+//     {
+//         token:"6S5DFSDF514A364"
+//     },
+//     {
+//         token:"EF5T4NYYEFA5T84"
+//     },
+//     {
+//         token:"QJ3WKUWJWRTHHET"
+//     },
+//     {
+//         token:"J4NH4JYRWYRNJTY"
+//     },
+// ]
 
 let trivia_tokens=[];
 let trivia_answers=[];
 
-let answers=[
-    {
-        id:365534,
-        token:"6S5DFSDF514A364",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"QJ3WKUWJWRTHHET",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"6S5DFSDF514A364",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"6S5DFSDF514A364",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"QJ3WKUWJWRTHHET",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"6S5DFSDF514A364",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"6S5DFSDF514A364",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"6S5DFSDF514A364",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"QJ3WKUWJWRTHHET",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"QJ3WKUWJWRTHHET",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"6S5DFSDF514A364",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-    {
-        id:365534,
-        token:"6S5DFSDF514A364",
-        username:"username",
-        date:new Date(),
-        score:20
-    },
-]
+// let answers=[
+//     {
+//         id:365534,
+//         token:"6S5DFSDF514A364",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"QJ3WKUWJWRTHHET",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"6S5DFSDF514A364",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"6S5DFSDF514A364",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"QJ3WKUWJWRTHHET",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"6S5DFSDF514A364",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"6S5DFSDF514A364",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"6S5DFSDF514A364",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"QJ3WKUWJWRTHHET",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"QJ3WKUWJWRTHHET",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"6S5DFSDF514A364",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+//     {
+//         id:365534,
+//         token:"6S5DFSDF514A364",
+//         username:"username",
+//         date:new Date(),
+//         score:20
+//     },
+// ]
 
 let success_btn=document.querySelector('.modal-footer .btn.btn-primary.btn-success')
 success_btn.addEventListener('click',()=>createToken());
@@ -270,6 +270,7 @@ function view_results(){
 
     let xhr_answ = new XMLHttpRequest();
     xhr_answ.open('GET', '/api/answers'+formatParams(answ_params));
+    xhr_answ.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr_answ.onload = function(){
         if(xhr_answ.status != 200){
             alert(xhr_answ.status+ ': '+ xhr_answ.statusText + "\n Un error ha ocurrido.");
@@ -297,7 +298,7 @@ function view_results(){
     console.log(formatParams(params));
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/trivia_tokens'+formatParams(params));
-    // xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr.send();
     xhr.onload = function(){
         if(xhr.status != 200){

@@ -65,7 +65,7 @@ function getMyTrivias(req, res){
 }
 
 function getTriviaById(req,res){
-    let triviaId = req.params._id;
+    let triviaId = req.params.id;
     Trivia.find({_id: triviaId},(err,trivia) => {
         if(err){
             res.status(500).send({message: 'Server error.'});
@@ -83,7 +83,7 @@ function updateTrivia(req, res){
     let triviaId = req.params.id;
     let update = req.body;
 
-    Trivia.findOneAndUpdate({id: triviaId}, update, {new:true}, (err,updatedTrivia) =>{
+    Trivia.findOneAndUpdate({_id: triviaId}, update, {new:true}, (err,updatedTrivia) =>{
         if(err){
             console.log(err);
             res.status(500).send({message: 'Server error.'});
@@ -97,11 +97,30 @@ function updateTrivia(req, res){
     });
 }
 
+function deleteTriviaById(req, res){
+    let triviaId = req.params.id;
+    console.log(triviaId);
+
+    Trivia.remove({_id: triviaId}, (err,deletedTrivia) =>{
+        if(err){
+            console.log(err);
+            res.status(500).send({message: 'Server error.'});
+        }else{
+            if(!deletedTrivia){
+                res.status(404).send({message: 'Could not update the trivia.'});
+            }else{
+                res.status(200).send({message:'Trivia deleted', result : deletedTrivia})
+            }
+        }
+    });
+}
+
+
 function deleteTrivia(req, res){
     let triviaId = req.params.trivia_id;
     console.log(req.params);
 
-    Trivia.deleteOne({_id: triviaId}, (err,deletedTrivia) =>{
+    Trivia.remove({_id: triviaId}, (err,deletedTrivia) =>{
     // Trivia.deleteOne({_id: "5ebb5c02d633ce19c0b9ddc3"}, (err,deletedTrivia) =>{
         if(err){
             console.log(err);
@@ -142,6 +161,7 @@ module.exports = {
     getTrivias,
     getMyTrivias,
     getTriviaById,
+    deleteTriviaById,
     updateTrivia,
     deleteTrivia,
     // deleteTriviaByOwner,
