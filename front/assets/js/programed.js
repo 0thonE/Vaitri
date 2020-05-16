@@ -103,7 +103,7 @@ function createTimeline() {
     console.log(formatParams(params));
     let xhr_trivias = new XMLHttpRequest();
     xhr_trivias.open('GET', '/api/trivias'+formatParams(params));
-    // xhr_trivias.setRequestHeader('content-type','application/json');
+    xhr_trivias.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr_trivias.onload = function(){
         if(xhr_trivias.status != 200){
             alert(xhr_trivias.status+ ': '+ xhr_trivias.statusText + "\n Un error ha ocurrido.");
@@ -132,6 +132,7 @@ function createTimeline() {
     console.log(formatParams(params));
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/trivia_tokens'+formatParams(params));
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     // xhr.setRequestHeader('content-type','application/json');
     xhr.send();
     xhr.onload = function(){

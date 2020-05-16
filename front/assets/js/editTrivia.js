@@ -354,7 +354,7 @@ function image_load(question) {
     }
     // yes there is an image
     // if(!img_holder.classList.contains("hiding")){
-        input_file.files[0]=question.file;
+        // input_file.files[0]=question.file;
         img_preview.innerHTML=`<img src="${question.img_src}">`;
         return;
     // }
@@ -478,7 +478,7 @@ function save_trivia(){
     
     let xhr = new XMLHttpRequest();
     // xhr.open('PATCH', '/api/trivia/?' + trivia_now.idTrivia);
-    xhr.open('PATCH', '/api/trivia/'+trivia_now.idTrivia);
+    xhr.open('PATCH', '/api/trivia/'+trivia_now._id);
     xhr.setRequestHeader('content-type','application/json');
     xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
 
@@ -496,45 +496,19 @@ function save_trivia(){
 }
 let trivia_now;
 function load_new_trivia (trivia) {
-
-    console.log(sessionStorage.getItem('idTrivia'));
    
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/api/trivias/'+sessionStorage.getItem('idTrivia'));
-    // xhr.setRequestHeader('content-type','application/json');
-    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
-    xhr.send();
-    xhr.onload = function(){
-        if(xhr.status != 200){
-            alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
-        }else{
-            // alert(xhr.status+ ': '+ xhr.statusText + "\n Exitoso");
-
-            let response = JSON.parse(xhr.responseText);
-            console.log(response);
-            trivias=response.results;
-            console.log(trivias);
-            trivias.forEach(e => {
-                // let question=e.questions.find(q => {
-                //     return q.img_src!==undefined&&q.img_src!==null&&q.img_src!=="";
-                // });
-                // create_trivia_card(e.idTrivia,e.name,e.description,6,true,question.img_src);
-                create_trivia_card(e._id,e.name,e.description,6,true);
-            });
-            
-        }
-    }
-
     let question_cards_list=document.querySelector('.question-cards-list');
     question_cards_list.innerHTML="";
 
-    trivia_now=trivia;
+    // trivia_now=trivia;
+
+    trivia_now=JSON.parse(sessionStorage.getItem('editTrivia'));
     console.log(trivia_now);
     trivia_now.questions.forEach((q,indx) => {
         new_question(undefined,q.text,q.points,q.anserws,q.img_src,q.file,q.valid);
         update_points(q.points);
         update_question_text(q.text);
-        update_img_src(q.img_src,q.file);
+        (q.img_src)?update_img_src(q.img_src,q.file):default_img_src();
         q.answers.forEach((ans,index) => {
             update_answer_txt(index,ans.text);
             update_answer_correct(index,ans.correct);
@@ -559,5 +533,6 @@ function load_new_trivia (trivia) {
 
 pointsSelection();
 createTrivia_controls();
-load_new_trivia(pretrivia);
+// load_new_trivia(pretrivia);
+load_new_trivia();
 
