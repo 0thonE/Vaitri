@@ -2,6 +2,12 @@
 
 let trivias=[];
 
+let btnBusqueda = document.getElementsByClassName('btn btn-white btn-round btn-just-icon')[0];            
+btnBusqueda.addEventListener("click", buscar);
+console.log(btnBusqueda);
+
+let htmlBody = document.getElementsByClassName('container-fluid')[1];
+
 
 function create_trivia_card(id,_title,_description,_answ_ppl,_state,_img ) {
     let title=(_title)?_title:"Titulo Trivia";
@@ -72,6 +78,8 @@ function create_trivia_card(id,_title,_description,_answ_ppl,_state,_img ) {
     last_edit_button.addEventListener('click',(event)=>{
         view_trivia(id);
     });
+
+    
         
 }
 
@@ -112,9 +120,20 @@ function formatParams( params ){
           .join("&")
   }
 
-function create_new_triviaDashboard(){
-    let name="Prueba";
-    
+function buscar(event) {
+  event.preventDefault();
+  let name= document.getElementsByClassName('form-control')[0].value;
+  console.log('name: ' + name);
+  create_new_triviaDashboard(name);
+
+}
+
+function create_new_triviaDashboard(name){
+
+  let triviaShow = document.querySelector('.triviaRow');
+  triviaShow.innerHTML = ""
+
+
     let params={
         owner:JSON.parse(sessionStorage.getItem("user"))._id,
     }
@@ -148,7 +167,7 @@ function create_new_triviaDashboard(){
         }
     }
 
-
+    
    
 }
 
