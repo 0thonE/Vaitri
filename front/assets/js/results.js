@@ -226,6 +226,7 @@ function createToken() {
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/trivia_token');
     xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr.send(JSON.stringify(trivia_tokenObj));
     xhr.onload = function(){
         if(xhr.status != 201){

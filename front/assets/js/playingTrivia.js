@@ -274,7 +274,7 @@ function loadQuestion_play(_question) {
         if(current_question.answers[index].text==="")answers_options[index].classList.add('not_displaying')
     })
 
-    if(question.img_src.length>0){
+    if(question.img_src){
         loadImage_play(question.img_src)
         return
     }
@@ -339,6 +339,7 @@ function endTrivia() {
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/answer');
     xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr.send(JSON.stringify(userAnswer));
     xhr.onload = function(){
         if(xhr.status != 201){

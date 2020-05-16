@@ -32,6 +32,7 @@ function register(event) {
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/user');
     xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr.send(str);
     xhr.onload = function(){
         if(xhr.status != 201){
@@ -59,6 +60,7 @@ function login(evt) {
         xhr.open('POST','/api/login');
 
         xhr.setRequestHeader('content-type','application/json');
+        xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
         
         xhr.onload = ()=>{
             if(xhr.status != 200){

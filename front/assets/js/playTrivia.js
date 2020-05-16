@@ -63,7 +63,7 @@ function setTriviaData(token) {
     console.log(formatParams(params));
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/trivia_tokens'+formatParams(params));
-    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
+    // xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr.send();
     xhr.onload = function(){
         if(xhr.status != 200){
@@ -81,7 +81,9 @@ function setTriviaData(token) {
                 _id:trivia_token.trivia,
             }
             console.log(formatParams(paramsTrivia));
-            xhr_triv.open('GET', '/api/trivias'+formatParams(paramsTrivia));
+            xhr_triv.open('GET', '/api/playTrivia'+formatParams(paramsTrivia));
+            // xhr_triv.open('GET', '/api/trivias'+formatParams(paramsTrivia));
+            // xhr_triv.setRequestHeader('Authorization',sessionStorage.getItem("token"));
             xhr_triv.send();
         }
     }

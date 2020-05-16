@@ -7,6 +7,7 @@ const mdAuth = require('../middlewares/authenticate');
 let api = express.Router();
 
 api.post('/trivia',mdAuth.ensureAuth, UserController.addTrivia);
+api.get('/playTrivia',UserController.getTrivias);
 api.get('/trivias',mdAuth.ensureAuth,UserController.getTrivias);
 api.get('/trivias/:owner',mdAuth.ensureAuth,UserController.getMyTrivias);
 // api.get('/trivias/:_id',UserController.getTriviaById);
