@@ -63,7 +63,7 @@ function setTriviaData(token) {
     console.log(formatParams(params));
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/trivia_tokens'+formatParams(params));
-    // xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr.send();
     xhr.onload = function(){
         if(xhr.status != 200){

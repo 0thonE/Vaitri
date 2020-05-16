@@ -492,17 +492,13 @@ function save_trivia(){
 }
 let trivia_now;
 function load_new_trivia (trivia) {
-
-    let question_cards_list=document.querySelector('.question-cards-list');
-    question_cards_list.innerHTML="";
-
     trivia_now=trivia;
     questions_list=trivia.questions
     current_question=questions_list[0];
     render_question_card();
     
     
-    // last_edit_button.click();
+    last_edit_button.click();
 }
 
 function create_new_trivia(){
@@ -517,3 +513,9 @@ function create_new_trivia(){
 pointsSelection();
 create_new_trivia();
 createTrivia_controls();
+
+// setTimeout(() => {
+//     load_new_trivia(pretrivia);
+// }, 5000);
+
+exports = {load_new_trivia};
