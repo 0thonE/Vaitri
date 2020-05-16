@@ -461,8 +461,8 @@ function save_trivia(){
         date:fecha_inputs[0].value+"/"+
                     fecha_inputs[1].value+"/"+
                     fecha_inputs[2].value,
-        questions:questionsNoImage,
-        // questions:questions_list,
+        // questions:questionsNoImage,
+        questions:questions_list,
         owner:currentUser._id,
     };
     // let tryo={
@@ -478,6 +478,7 @@ function save_trivia(){
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/trivia');
     xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr.send(JSON.stringify(triviaObj));
     xhr.onload = function(){
         if(xhr.status != 201){

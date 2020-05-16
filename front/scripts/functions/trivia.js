@@ -18,19 +18,22 @@ function addTrivia(req, res){
     // trivia.questions = params.questions;
     trivia.questions = params.questions.map((e)=>{
         let img="";
-        let filename="poorfilename";
-        if(e.img_src=""){
+        let filename="poorfilename.jpg";
+        if(e.img_src){
             img=e.img_src.replace("data:image/png;base64,", "");
-            filename=Math.random().toString() + ".jpg"
-            fs.writeFile("public/upload/"+filename,img,'base64',(err)=>{
-                
+            filename=Math.ceil(Math.random()*10000000000000000000) + ".jpg"
+            fs.writeFile("/../../public/upload/"+filename,img,'base64',(err)=>{
+                if(err){
+                    console.log(err);
+                    res.status(500).send({mesage:'Server error related to images.'});
+                } 
             })
         }
         return ({
             text:e.text,
             points:e.points,
             answers:e.answers,
-            image:fl,
+            image:"/../../public/upload/"+filename,
             valid:e.valid,
             id:e.id,
         });

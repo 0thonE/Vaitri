@@ -6,8 +6,7 @@ const cors = require('cors')
 const app = express();
 
 
-app.use(cors())
-
+app.use(cors());
 //cargar rutas
 let userRoutes = require('./routes/user');
 let triviaRoutes = require('./routes/trivia');
@@ -15,11 +14,20 @@ let Trivia_TokensRoutes = require('./routes/trivia_tokens');
 let answersRoutes = require('./routes/answers');
 
 //middleware de body-parser
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
+
+// app.use(bodyParser.urlencoded({extended:true}));
+// app.use(bodyParser.json());
+
+app.use(express.urlencoded({extended:true,limit:'50mb'}));
+app.use(express.json({limit:'50mb'}));
+
 
 app.use(express.static(__dirname + "/../examples"))
 app.use(express.static(__dirname + "/../../front"))
+
+
+app.use(express.json({limit:'50mb'}));
+app.use("public/upload",express.static(__dirname + "/../../public/upload"));
 
 
 
