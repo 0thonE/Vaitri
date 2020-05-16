@@ -65,7 +65,7 @@
               <p>Home</p>
             </a>
           </li>
-          <li class="nav-item active  ">
+          <li class="nav-item ">
             <!-- trivias -->
             <a class="nav-link" href="./dashboard.html">
               <i class="material-icons">dashboard</i>
@@ -93,7 +93,7 @@
               <p>Programadas</p>
             </a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item active">
             <!-- programadas -->
             <a class="nav-link" href="./busqueda.html">
               <i class="material-icons">search</i>
@@ -149,8 +149,8 @@
           <div class="collapse navbar-collapse justify-content-end">
             <form class="navbar-form">
               <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Buscar...">
-                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                <input id="busquedaNombre" type="text" value="" class="form-control" placeholder="Buscar...">
+                <button type="button" class="btn btn-white btn-round btn-just-icon">
                   <i class="material-icons">search</i>
                   <div class="ripple-container"></div>
                 </button>
@@ -196,7 +196,7 @@
       <div class="content">
 
         <div class="container-fluid">
-          <div class="row trivias-row">
+          <div class="row triviaRow">
             <div class="col-md-4">
               <div class="card card-product card-trivia" >
                 <div class="card-header card-header-image" data-header-animation="true">
@@ -432,7 +432,7 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
 
-  <script type="module" src="../assets/js/dashboard.js"></script>
+  <script type="module" src="../assets/js/busqueda.js"></script>
 
 
   <script>

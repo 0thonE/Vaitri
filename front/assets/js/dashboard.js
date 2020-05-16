@@ -511,12 +511,12 @@ function create_trivia_card(id,_title,_description,_answ_ppl,_state,_img ) {
     let last_view_button=trivias_board.querySelectorAll('.view-trivia')[last_el_index];
     last_view_button.addEventListener('click',(event)=>{
         trivias_board.click();
-        view_trivia(id);
+        view_triviaTokens(id);
         // document.querySelector('#unclicker').click();
     });
     let last_edit_button=trivias_board.querySelectorAll('.edit-trivia')[last_el_index];
     last_edit_button.addEventListener('click',(event)=>{
-        edit_trivia(id);
+        view_trivia(id);
     });
     let last_delete_button=trivias_board.querySelectorAll('.delete-trivia')[last_el_index];
     last_delete_button.addEventListener('click',(event)=>{
@@ -526,13 +526,13 @@ function create_trivia_card(id,_title,_description,_answ_ppl,_state,_img ) {
 }
 
 
-function view_trivia(id) {
+function view_triviaTokens(id) {
     remove_tooltips();
     sessionStorage.setItem('triviaId',id);
     window.location.replace("./results.html");
 }
 
-function edit_trivia(id) {
+function view_trivia(id) {
     remove_tooltips();
     let triv=trivias.find(t=>{
         return t._id===id
