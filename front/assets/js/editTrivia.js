@@ -1,6 +1,6 @@
 
 let pretrivia = {
-    "idTrivia": 1588043660997,
+    "idTrivia": "5ebfa7567442e4211040e157",
     "name": "Prueba",
     "description": " Descripción breve Lorem ipsum dolor, sit amet consectetur adipisicing elit Ab, facere sunt aut necessitatibus obcaecati accusantium voluptate, fugit asperiores repudiandae id temporibus molestias",
     "date": "30/05/2020",
@@ -165,7 +165,6 @@ function createTrivia_controls() {
 
     // image controls
     $(".fileinput-preview").bind("DOMNodeInserted",function(){  
-        console.log(object);
         let img_preview=document.querySelectorAll(".img_uploader .fileinput-preview img")[0];
         let in_file=document.querySelectorAll(".img_uploader .fileinput-container")[0];
         update_img_src(img_preview.src,in_file.files[0]);
@@ -355,7 +354,7 @@ function image_load(question) {
     }
     // yes there is an image
     // if(!img_holder.classList.contains("hiding")){
-        // input_file.files[0]=question.file;
+        input_file.files[0]=question.file;
         img_preview.innerHTML=`<img src="${question.img_src}">`;
         return;
     // }
@@ -478,14 +477,17 @@ function save_trivia(){
 
     
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', '/api/trivia');
+    // xhr.open('PATCH', '/api/trivia/?' + trivia_now.idTrivia);
+    xhr.open('PATCH', '/api/trivia/'+trivia_now.idTrivia);
     xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
+
     xhr.send(JSON.stringify(triviaObj));
     xhr.onload = function(){
-        if(xhr.status != 201){
-            alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
+        if(xhr.status != 200){
+            alert(xhr.status+ ': '+ xhr.statusText + "/n Un error ha ocurrido.");
         }else{
-            alert(xhr.status+ ': '+ xhr.statusText + "\nTrivia creada, la podra encontrar en su dashboard de trivias");
+            alert(xhr.status+ ': '+ xhr.statusText + "\nTrivia guardada, la podra encontrar en su dashboard de trivias");
             window.location.replace("./dashboard.html")
         }
     }
@@ -494,6 +496,34 @@ function save_trivia(){
 }
 let trivia_now;
 function load_new_trivia (trivia) {
+
+    console.log(sessionStorage.getItem('idTrivia'));
+   
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/api/trivias/'+sessionStorage.getItem('idTrivia'));
+    // xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
+    xhr.send();
+    xhr.onload = function(){
+        if(xhr.status != 200){
+            alert(xhr.status+ ': '+ xhr.statusText + "\n Un error ha ocurrido.");
+        }else{
+            // alert(xhr.status+ ': '+ xhr.statusText + "\n Exitoso");
+
+            let response = JSON.parse(xhr.responseText);
+            console.log(response);
+            trivias=response.results;
+            console.log(trivias);
+            trivias.forEach(e => {
+                // let question=e.questions.find(q => {
+                //     return q.img_src!==undefined&&q.img_src!==null&&q.img_src!=="";
+                // });
+                // create_trivia_card(e.idTrivia,e.name,e.description,6,true,question.img_src);
+                create_trivia_card(e._id,e.name,e.description,6,true);
+            });
+            
+        }
+    }
 
     let question_cards_list=document.querySelector('.question-cards-list');
     question_cards_list.innerHTML="";

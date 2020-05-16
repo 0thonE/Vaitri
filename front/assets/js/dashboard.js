@@ -603,6 +603,7 @@ function create_new_triviaDashboard(){
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '/api/trivias'+formatParams(params));
     // xhr.setRequestHeader('content-type','application/json');
+    xhr.setRequestHeader('Authorization',sessionStorage.getItem("token"));
     xhr.send();
     xhr.onload = function(){
         if(xhr.status != 200){
