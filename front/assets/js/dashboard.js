@@ -542,7 +542,7 @@ function edit_trivia(id) {
         console.log(trivia);
         load_new_trivia(triv)
     }, 3000);
-    window.location.replace('./create-trivia.html');
+    window.location.replace('./edit-trivia.html');
 }
 
 function delete_trivia(id,t_card) {
