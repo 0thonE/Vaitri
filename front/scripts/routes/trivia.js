@@ -8,7 +8,7 @@ let api = express.Router();
 
 api.post('/trivia',mdAuth.ensureAuth, UserController.addTrivia);
 api.get('/trivias',mdAuth.ensureAuth,UserController.getTrivias);
-api.get('/trivias/:owner',mdAuth.ensureAuth,UserController.getMyTrivias);
+// api.get('/trivias/:owner',mdAuth.ensureAuth,UserController.getMyTrivias);
 // api.get('/trivias/:_id',UserController.getTriviaById);
 // api.delete('/trivias/:owner',UserController.deleteTriviaByOwner);
 api.get('/trivia/:id',mdAuth.ensureAuth,UserController.getTriviaById);
