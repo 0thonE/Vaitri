@@ -15,6 +15,7 @@ api.get('/trivia/:id',mdAuth.ensureAuth,UserController.getTriviaById);
 api.patch('/trivia/:id',mdAuth.ensureAuth,UserController.updateTrivia);
 api.delete('/trivia/:id',mdAuth.ensureAuth,UserController.deleteTriviaById);
 
+
 // api.delete('/trivias',mdAuth.ensureAuth,UserController.deleteTrivia);
 // api.delete('/trivias/:trivia_id',mdAuth.ensureAuth,UserController.deleteTrivia);
 
