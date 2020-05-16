@@ -517,11 +517,3 @@ function create_new_trivia(){
 pointsSelection();
 create_new_trivia();
 createTrivia_controls();
-
-// setTimeout(() => {
-//     load_new_trivia(pretrivia);
-// }, 5000);
-
-module.exports = {
-    load_new_trivia,
-};
